@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ActivityMain">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                    android:id="@+id/btn_txt_cats"
+
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryTextView"
+                    android:textAllCaps="false"
+                    android:text="Cats"
+                    android:textColor="@color/colorPrimaryDark"
+            />
+
+            <TextView
+                    android:text="temp"
+
+                    android:id="@+id/txtUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorText"
+            />
+
+            <TextView
+
+                    android:id="@+id/btn_txt_dogs"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="@color/colorPrimaryTextView"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="28dp"
+                    android:text="Dogs"
+
+                    android:textColor="@color/colorPrimaryDark"
+            />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            layout="@layout/recycler_view"/>
+
+    <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

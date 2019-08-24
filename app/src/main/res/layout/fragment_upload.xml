@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        android:id="@+id/fragment_scroll_view"
+        android:layout_gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="12dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+
+        android:background="@drawable/fragment_upload_background"
+>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_name"
+
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:hint="@string/animal_name"
+                android:layout_margin="12sp"
+        />
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_phone"
+
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:hint="@string/number_for_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+        />
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.1"
+                >
+
+            <TextView
+
+                    android:textAlignment="center"
+                    android:text="@string/weight_in_kilo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:textSize="14sp"
+
+                    />
+            <Spinner
+                    android:gravity="end"
+                    android:textDirection="anyRtl"
+                    android:id="@+id/fragment_animal_picker_weight"
+                    android:layout_gravity="start"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="12dp"
+
+                    />
+
+
+
+        </LinearLayout>
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_age"
+
+                android:inputType="number"
+                android:textAlignment="center"
+                android:hint="@string/age_m"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_margin="12dp"
+                android:layout_weight="0.9"
+
+
+        />
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/auto_complete_location"
+                android:textAlignment="center"
+                android:hint="@string/loc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+        />
+
+
+    </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+        >
+            <Spinner
+                    android:id="@+id/fragment_animal_picker_breed"
+
+                    android:textAlignment="center"
+                    android:textDirection="anyRtl"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.85"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+            />
+
+            <Spinner
+                    android:id="@+id/fragment_animal_picker_gender"
+
+                    android:textAlignment="center"
+                    android:textDirection="anyRtl"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+            />
+
+            <Spinner
+                    android:id="@+id/fragment_animal_picker_type"
+
+                    android:textAlignment="center"
+                    android:textDirection="anyRtl"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+            />
+
+
+
+        </LinearLayout>
+
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_story"
+                android:lines="0"
+                android:textAlignment="center"
+                android:hint="@string/animal_story"
+                android:inputType="textAutoCorrect"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="12dp"
+        />
+
+        <TextView
+                android:gravity="center"
+                android:text="@string/title_upload_image_view"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/fragment_upload_edit_image1"
+
+                    android:tag="1"
+                    android:src="@mipmap/plus3"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/image_btn_pink_border"
+                    android:layout_margin="12dp"
+                    android:contentDescription="@string/image_for_upload"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+            />
+            <ImageView
+                    android:id="@+id/fragment_upload_edit_image2"
+
+                    android:tag="2"
+                    android:src="@mipmap/plus3"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/image_btn_pink_border"
+                    android:layout_margin="12dp"
+                    android:contentDescription="@string/image_for_upload"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+            />
+            <ImageView
+                    android:id="@+id/fragment_upload_edit_image3"
+
+                    android:tag="3"
+
+                    android:src="@mipmap/plus3"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/image_btn_pink_border"
+                    android:layout_margin="12dp"
+                    android:contentDescription="@string/image_for_upload"
+                    android:layout_height="100dp"
+                    android:layout_width="0dp"
+            />
+
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/btn_done"
+
+                android:layout_margin="12dp"
+                android:background="@drawable/btn_round_corners_pink"
+                android:text="@string/done"
+                android:textSize="22sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        />
+
+
+    </LinearLayout>
+
+</ScrollView>

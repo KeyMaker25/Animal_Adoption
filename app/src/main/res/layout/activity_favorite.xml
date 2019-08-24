@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+
+            android:id="@+id/txt_top_title"
+            android:layout_margin="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_round_corners_green"
+            android:textSize="22sp"
+            android:textAlignment="center"
+            android:text="@string/menu_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
+    <FrameLayout
+            android:id="@+id/fragment_container_fav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
+    <TextView
+            android:layout_margin="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_round_corners_green"
+            android:textSize="22sp"
+            android:textAlignment="center"
+            android:text="@string/my_adoption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_favorite_my_animal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:background="@color/colorPrimaryBtn"
+            android:id="@+id/btn_add_floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="18sp"
+            android:src="@mipmap/ic_plus"
+
+    />
+</LinearLayout>

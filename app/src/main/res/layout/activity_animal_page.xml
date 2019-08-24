@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+            android:id="@id/top_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <RelativeLayout
+                android:id="@+id/top_container"
+                android:layout_width="fill_parent"
+                android:layout_height="300sp" >
+
+            <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentTop="true"/>
+
+            <com.viewpagerindicator.CirclePageIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="bottom"
+                    android:padding="10dip"
+                    app:centered="true"
+                    app:fillColor="#2979FF"
+                    app:pageColor="#fff"
+                    app:snap="false" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:background="@color/colorPrimaryLight"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/top_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        >
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryTextView"
+                >
+
+            <Button
+                    android:id="@+id/animal_page_btn_add_favorite"
+
+
+                    android:background="@mipmap/ic_star_empty"
+                    android:padding="12sp"
+                    android:gravity="center"
+                    android:layout_width="0sp"
+                    android:layout_weight="0.4"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    />
+
+            <TextView
+                    android:id="@+id/animal_txt_page_name"
+
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="nameTemp"
+                    android:layout_width="0sp"
+                    android:layout_height="wrap_content"
+                    />
+
+
+        </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+            >
+
+                <TextView
+                        android:id="@+id/animal_txt_page_age"
+
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="סוג"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+                <TextView
+
+                        android:paddingRight="8dp"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="גיל : "
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+            >
+
+                <TextView
+                        android:id="@+id/animal_txt_page_gender"
+
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="סוג"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+                <TextView
+
+                        android:paddingRight="8dp"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="מין : "
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+            >
+
+                <TextView
+                        android:id="@+id/animal_txt_page_weight"
+
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="סוג"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+                <TextView
+
+                        android:paddingRight="8dp"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="משקל : "
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+            </LinearLayout>
+            <TextView
+                    android:textAlignment="center"
+
+                    android:padding="12sp"
+                    android:textSize="16sp"
+                    android:textDirection="anyRtl"
+                    android:text="@string/animal_page_story_title"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimaryTextView"
+            />
+            <TextView
+                    android:id="@+id/animal_txt_page_story"
+
+                    android:textAlignment="center"
+                    android:lines="4"
+                    android:textSize="16sp"
+                    android:textDirection="anyRtl"
+                    android:text="@string/my_story_full"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_margin="8sp"
+            />
+
+            <TextView
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:text="מיקום"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryTextView"
+
+            />
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+            >
+
+                <TextView
+                        android:id="@+id/animal_txt_page_time_uploaded"
+
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="סוג"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+                <TextView
+
+                        android:paddingRight="8dp"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="הועלה בתאריך : "
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+            >
+
+                <TextView
+                        android:id="@+id/animal_txt_page_location"
+
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="סוג"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+                <TextView
+
+                        android:paddingRight="8dp"
+                        android:textSize="16sp"
+                        android:textDirection="anyRtl"
+                        android:text="עיר : "
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0sp"
+                />
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/animal_page_btn_call"
+
+                    android:background="@drawable/btn_round_corners_pink"
+                    android:textSize="22sp"
+                    android:gravity="center"
+                    android:text="להתקשר לבעלים"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="12sp"
+            />
+
+            <Button
+                    android:id="@+id/animal_page_btn_contact"
+
+                    android:background="@drawable/btn_round_corners_green"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:text="צרו קשר"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="12sp"
+            />
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
