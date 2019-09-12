@@ -2,40 +2,39 @@ package bernat.oron.catadoption.activities
 
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bernat.oron.catadoption.adapters.AnimalAdapterH
+import bernat.oron.catadoption.adapters.AdapterHAnimal
 import bernat.oron.catadoption.R
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.animalCollection
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollection
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.isUserLogin
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.uploadAnimalCollection
-import bernat.oron.catadoption.dao.Animal
-import bernat.oron.catadoption.dao.AnimalRepository
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uploadAnimalCollectionID
 import bernat.oron.catadoption.fragments.FragmentUpload
 import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_1
 import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_2
 import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_3
-import bernat.oron.catadoption.model.AnimalsFactory
 import bernat.oron.catadoption.model.UploadNewAnimalInterface
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_favorite.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
@@ -44,12 +43,16 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
     lateinit var recFavorite: RecyclerView
     lateinit var recMyAnimal: RecyclerView
     lateinit var fragUpload: FragmentUpload
-    lateinit var titleTop: TextView
+    lateinit var titleMyFavorite: TextView
+    lateinit var titleMyUploads: TextView
+    lateinit var frameLayout: FrameLayout
+
     private var filePath: Uri? = null
     private val storage = FirebaseStorage.getInstance()
     private val dataBase = FirebaseDatabase.getInstance()
     private var arrayOfImages = arrayListOf<Bitmap>()
-    private var progressDialog: ProgressBar? = null
+
+    private var progressDialog: ProgressDialog? = null
 
     companion object{
         var uniqueID = ""
@@ -58,14 +61,55 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
-        progressDialog =  ProgressBar(this)
+        progressDialog = ProgressDialog(
+            baseContext,
+            R.style.AppTheme
+        )
+        progressDialog?.isIndeterminate = true
+        progressDialog?.setMessage("מעלה למאגר")
+
         btnFloating = findViewById(R.id.btn_add_floating)
         initFloatingBtn()
+
         recFavorite = findViewById(R.id.recycler_view_favorite)
         recMyAnimal = findViewById(R.id.recycler_view_favorite_my_animal)
         initRecyclerView()
-        titleTop = findViewById(R.id.txt_top_title)
 
+        titleMyFavorite = findViewById(R.id.title_my_favorite)
+        titleMyUploads = findViewById(R.id.title_favorite_upload)
+        frameLayout = findViewById(R.id.frame_container)
+        checkRecyclerContent()
+    }
+
+    private fun checkRecyclerContent(){
+        val v = layoutInflater.inflate(R.layout.activity_favorite_blank,null)
+        if ((recFavorite.adapter as AdapterHAnimal).items.isEmpty() &&
+            (recMyAnimal.adapter as AdapterHAnimal).items.isEmpty()){
+            titleMyFavorite.visibility = View.GONE
+            titleMyUploads.visibility = View.GONE
+        }else if ((recFavorite.adapter as AdapterHAnimal).items.isEmpty()) {
+            titleMyFavorite.visibility = View.GONE
+            val l1 = v.findViewById<LinearLayout>(R.id.layout_top)
+            l1.visibility = View.INVISIBLE
+        }
+        else if ((recMyAnimal.adapter as AdapterHAnimal).items.isEmpty()){
+            titleMyUploads.visibility = View.GONE
+            val l1 = v.findViewById<LinearLayout>(R.id.layout_top)
+            l1.visibility = View.INVISIBLE
+        }else {
+            frameLayout.removeAllViews()
+            titleMyFavorite.visibility = View.VISIBLE
+            titleMyUploads.visibility = View.VISIBLE
+            return
+        }
+        frameLayout.addView(v)
+
+    }
+
+    override fun onResume() {
+        recFavorite.adapter?.notifyDataSetChanged()
+        checkRecyclerContent()
+        super.onResume()
     }
 
     private fun initFloatingBtn() {
@@ -75,40 +119,30 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
             .hide(fragUpload).commit()
         //this is the btn for uploading (after register) a new animal for adoption
         btnFloating.setOnClickListener {
-            if (isUserLogin()){
-                fragUpload.event = this
-                titleTop.text = "הוספת בעל חיים לאימוץ"
-                supportFragmentManager.beginTransaction().show(fragUpload).commit()
-                //init id for uploaded(?) animal
-                uniqueID = UUID.randomUUID().toString().replace("-","")
-            }else{
-                //show login fragment,
 
-            }
+            fragUpload.event = this
+            titleMyFavorite.text = "הוספת בעל חיים לאימוץ"
+
+            supportFragmentManager.beginTransaction()
+                .show(fragUpload).commit()
+            //init id for uploaded(?) animal
+            uniqueID = UUID.randomUUID().toString().replace("-","")
         }
     }
 
     private fun initRecyclerView(){
         recFavorite.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recMyAnimal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-        val uploadList = ArrayList<AnimalsFactory>()
-        val favoriteList = ArrayList<AnimalsFactory>()
-        for (id in favoriteAnimalCollection){
-            favoriteList.add(animalCollection.single { it.ID == id })
-        }
-        for (id in uploadAnimalCollection){
-            uploadList.add(animalCollection.single { it.ID == id })
-        }
-        val adapterFavorite = AnimalAdapterH(
-            favoriteList,
+        val adapterFavorite = AdapterHAnimal(
+            favoriteAnimalCollectionID,
             this
         )
-        val adapterUploads = AnimalAdapterH(
-            uploadList,
+        val adapterUploads = AdapterHAnimal(
+            uploadAnimalCollectionID,
             this
         )
 
-        val onClick: ((AnimalsFactory) -> Unit)? = {
+        val onClick: ((bernat.oron.catadoption.model.Animal) -> Unit)? = {
                 item ->
             val i = Intent(this, ActivityAnimalPage::class.java)
             i.putExtra("animal", item)
@@ -127,7 +161,7 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
             super.onBackPressed()
         }else{
             supportFragmentManager.beginTransaction().hide(fragUpload).commit()
-            titleTop.text = "מועדפים"
+            titleMyFavorite.text = "מועדפים"
         }
     }
 
@@ -173,13 +207,12 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
         }
     }
 
-    private fun uploadImageToFireBase(animal: AnimalsFactory) {
+    private fun uploadImageToFireBase(animal: bernat.oron.catadoption.model.Animal) {
         var count = 0
         animal.image = mutableListOf()
 
         val ref = storage.reference
-
-        //this is the number of images that we have
+        //number of images to upload
         for (item in arrayOfImages){
             val path = "Israel/${uniqueID}image$count"
             val baos = ByteArrayOutputStream()
@@ -187,12 +220,14 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
             itemBitMap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val data = baos.toByteArray()
             val uploadTask = ref.child(path).putBytes(data)
+            //we convert the bitmap to byteArray we are ready to send it
             uploadTask.addOnCompleteListener{
                 task ->
                 if (task.isSuccessful) {
                     Log.i("FireBase upload photo","Upload Success")
+                    //once we upload to image we save the location (path) is storage to main animal object, for later use
                     val res = animal.image!!.add(path)
-                    Log.i("images uploaded", "${animal.image!!.count()} out of ${arrayOfImages.count()} current res = $res ")
+                    Log.i("images uploaded", "${animal.image!!.count()} out of ${arrayOfImages.count()} current result = $res ")
                     if (animal.image!!.count() == arrayOfImages.count()){
                         //here we can upload animal.
                         Log.i("path for photo", animal.image!!.random())
@@ -207,44 +242,27 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
 
     }
 
-    /**
-     * this function is used when the user place all details on animal and it's been validate
-     * new we need to upload the images to storage (better for images) with uniqueID+image+number
-     * after that we need to upload the animal details to DB
-     * **/
-
-    private fun uploadAnimal(animal: AnimalsFactory){
+    private fun uploadAnimal(animal: bernat.oron.catadoption.model.Animal){
         print("animal.image = ${animal.image}")
-        //we first upload to user list (update user uploads)
-        val uid = FirebaseAuth.getInstance().currentUser!!.uid
-        val map1 = mutableMapOf<String, AnimalsFactory>()
+        //upload the new animal to the tst BD for pre upload verification
+        val map1 = mutableMapOf<String, bernat.oron.catadoption.model.Animal>()
         map1[uniqueID] = animal
 
+        //send to tst DB - for verification (Spam)
+        //Will be verified manually
         dataBase.reference.child("Israel-tst/animals/")
             .updateChildren(map1 as Map<String, Any>)
             .addOnCompleteListener {
                     task ->
                 if (task.isSuccessful){
                     Log.i("Upload animal", "Successful")
-                    val daoAnimal = animal.image?.let {
-                        Animal(null,animal.ID,
-                            animal.name,animal.type,
-                            animal.age.toInt(),animal.breed,
-                            animal.story,animal.location,
-                            animal.gender,animal.weight.toInt(),
-                            animal.timeOfUpload,animal.ownerID,
-                            animal.phone,
-                            it.joinToString { " " }
-                        )
-                    }
-                    AnimalRepository(this).insertTask(daoAnimal!!)
-
                 }else{
                     Log.e("Upload animal", "Failed")
                     print("Upload Failed")
                 }
             }
 
+        //upload to user uploads list the ID of new uploaded animal
         val map2 = mutableMapOf<String, String>()
         map2[uniqueID] = animal.type
         dataBase.reference.child("Israel-tst/users/$uid/uploads/")
@@ -259,15 +277,14 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
                     print("Upload Failed")
 
                 }
-                progressDialog!!.visibility = View.INVISIBLE
+                progressDialog?.dismiss()
             }
-        titleTop.text = "מועדפים"
+        titleMyFavorite.text = "מועדפים"
     }
 
-    override fun newAnimal(animal: AnimalsFactory) {
+    override fun newAnimal(animal: bernat.oron.catadoption.model.Animal) {
         supportFragmentManager.beginTransaction().hide(fragUpload).commit()
-        progressDialog!!.isIndeterminate = true
-        progressDialog!!.visibility = View.VISIBLE
+        progressDialog?.show()
 
         //here we upload and he animal get the path to animal.images
         uploadImageToFireBase(animal)

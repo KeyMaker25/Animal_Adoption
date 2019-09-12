@@ -1,6 +1,7 @@
 package bernat.oron.catadoption.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,14 +23,10 @@ class FragmentFilter: Fragment(){
     lateinit var checkBoxA_1: CheckBox
     lateinit var checkBoxA_2: CheckBox
     lateinit var checkBoxA_3: CheckBox
-    lateinit var checkBoxB_1: CheckBox
-    lateinit var checkBoxB_2: CheckBox
     var filter: FilterInterface? = null
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //init objects
         btnFiler = view.findViewById(R.id.frag_btn_filter)
 
         checkBoxL_N = view.findViewById(R.id.checkboxL_north)
@@ -38,13 +35,10 @@ class FragmentFilter: Fragment(){
         checkBoxL_T = view.findViewById(R.id.checkboxL_tlv)
         checkBoxL_J = view.findViewById(R.id.checkboxL_jero)
         checkBoxL_S = view.findViewById(R.id.checkboxL_south)
+
         checkBoxA_1 = view.findViewById(R.id.checkboxA_1_6M)
         checkBoxA_2 = view.findViewById(R.id.checkboxA_6M_2Y)
         checkBoxA_3 = view.findViewById(R.id.checkboxA_2Y_)
-        checkBoxB_1 = view.findViewById(R.id.checkboxB_P)
-        checkBoxB_2 = view.findViewById(R.id.checkboxB_M)
-
-
 
     }
 
@@ -56,8 +50,8 @@ class FragmentFilter: Fragment(){
      * **/
     override fun onStart() {
         super.onStart()
-        val answersArr = ArrayList<Boolean>()
         btnFiler.setOnClickListener{
+            val answersArr = ArrayList<Boolean>()
             answersArr.add(checkBoxL_N.isChecked) // 0 - remove area north
             answersArr.add(checkBoxL_H.isChecked) // 1 - remove area haifa
             answersArr.add(checkBoxL_C.isChecked) // 2 - remove area center
@@ -67,17 +61,22 @@ class FragmentFilter: Fragment(){
             answersArr.add(checkBoxA_1.isChecked) // 6 - remove age 1-6 mouths
             answersArr.add(checkBoxA_2.isChecked) // 7 - remove age 6mouths - 2years
             answersArr.add(checkBoxA_3.isChecked) // 8 - remove age 2years +
-            answersArr.add(checkBoxB_1.isChecked) // 9 - remove pure breed of animal
-            answersArr.add(checkBoxB_2.isChecked)// 10 - remove mix breed of animal
             val indexList = ArrayList<Int>()
+            Log.i("filter btn-count",answersArr.count().toString())
             for (i in 0 until answersArr.count()){
                 if (!answersArr[i]){
                     indexList.add(i)
                 }
             }
+            Log.i("filter remove-count",indexList.count().toString())
             //pass the filter parameters
             filter?.didFilter(indexList)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        filter = null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

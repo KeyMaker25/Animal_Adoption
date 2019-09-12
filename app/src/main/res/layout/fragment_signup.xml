@@ -3,10 +3,9 @@
         android:layout_gravity="center"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_margin="12dp"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-
 >
 
     <LinearLayout
@@ -14,15 +13,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="56dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
-        <ImageView android:src="@mipmap/cat_img"
+        <ImageView android:src="@mipmap/app_logo"
                    android:layout_width="wrap_content"
-                   android:layout_height="72dp"
-                   android:layout_marginBottom="24dp"
-                   android:layout_gravity="center_horizontal" />
+                   android:layout_height="80dp"
+                   android:layout_margin="12dp"
+                />
 
         <!--  Name Label -->
         <com.google.android.material.textfield.TextInputLayout

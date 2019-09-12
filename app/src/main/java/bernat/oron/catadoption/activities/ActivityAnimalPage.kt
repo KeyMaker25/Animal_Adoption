@@ -2,7 +2,6 @@ package bernat.oron.catadoption.activities
 
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -14,10 +13,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollection
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.isUserLogin
 import bernat.oron.catadoption.adapters.AdapterSlideImage
-import bernat.oron.catadoption.model.AnimalsFactory
+import bernat.oron.catadoption.model.Animal
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.viewpagerindicator.CirclePageIndicator
@@ -30,14 +29,15 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
     private var mPager: ViewPager? = null
     private var currentPage = 0
     private var NUM_PAGES = 1
+    private var isLiked: Boolean = false
     var stringImages: ArrayList<String>? = null
-    var animal : AnimalsFactory? = null
+    var animal : Animal? = null
     private lateinit var btnAddFavorite : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animal_page)
-        animal = intent.getSerializableExtra("animal") as AnimalsFactory
+        animal = intent.getSerializableExtra("animal") as Animal
         if (animal!!.image != null){
             stringImages = ArrayList()
             for (item in animal!!.image!!){
@@ -49,11 +49,9 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
             Log.i("no images","for animal ${animal!!.ID}")
         }
         if(animal != null) initMiddleBottom(animal!!)
-
     }
 
-
-    private fun initMiddleBottom(item: AnimalsFactory){
+    private fun initMiddleBottom(item: Animal){
 
         val txtName : TextView = findViewById(R.id.animal_txt_page_name)
         btnAddFavorite = findViewById(R.id.animal_page_btn_add_favorite)
@@ -65,6 +63,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         val txtCity : TextView = findViewById(R.id.animal_txt_page_location)
         val btnCall : Button = findViewById(R.id.animal_page_btn_call)
         val btnContact : Button = findViewById(R.id.animal_page_btn_contact)
+        val btnShare : Button = findViewById(R.id.animal_page_btn_share)
 
         txtName.text = item.name
         txtAge.text = item.age.toString()
@@ -78,20 +77,22 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         initBtnLike()
         btnCall.setOnClickListener(this)
         btnContact.setOnClickListener(this)
+        btnShare.setOnClickListener(this)
 
     }
 
     private fun initBtnLike() {
         //check id user saved this animal
-        if (favoriteAnimalCollection.contains(animal!!.ID)){
+        if (favoriteAnimalCollectionID.contains(animal!!.ID)){
             //this animal was liked before set btn
             Log.i("liked", "name = ${animal!!.name} ID = ${animal!!.ID}")
-            btnAddFavorite.background = ContextCompat.getDrawable(this,R.mipmap.ic_start_full)
+            isLiked = true
+            btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_full)
         }
     }
 
     private fun initImages() {
-        mPager = findViewById<ViewPager>(R.id.pager)
+        mPager = findViewById(R.id.pager)
 
         mPager?.adapter = AdapterSlideImage(this, stringImages!!)
         val indicator = findViewById<CirclePageIndicator>(R.id.indicator)
@@ -102,7 +103,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
 
         NUM_PAGES = stringImages!!.count()
         val handler = Handler()
-        val Update = Runnable {
+        val run = Runnable {
             if (currentPage == NUM_PAGES) {
                 currentPage = 0
             }
@@ -111,7 +112,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         val swipeTimer = Timer()
         swipeTimer.schedule(object : TimerTask() {
             override fun run() {
-                handler.post(Update)
+                handler.post(run)
             }
         }, 2500, 2500)
 
@@ -132,48 +133,99 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.animal_page_btn_call->{
-                //open phone dialer, with owner number
+                //open phone dialer, with animal owners number
                 val intent = Intent(Intent.ACTION_DIAL)
                 intent.data = Uri.parse("tel:${animal!!.phone}")
                 startActivity(intent)
             }
             R.id.animal_page_btn_add_favorite->{
                 if (isUserLogin()){
-                    val obj = animal!!
-                    Log.i("like animal id", obj.ID)
-                    val ref = FirebaseDatabase.getInstance()
-                    val uid = FirebaseAuth.getInstance().currentUser!!.uid
-                    val map2 = mutableMapOf<String, String>()
-                    map2[obj.ID] = obj.type
-                    ref.reference.child("Israel-tst/users/$uid/favorite/")
-                        .updateChildren(map2 as Map<String, Any>)
-                        .addOnCompleteListener {
-                                task ->
-                            if (task.isSuccessful){
-                                btnAddFavorite.background = ContextCompat.getDrawable(this,R.mipmap.ic_start_full)
-                                Log.i("Upload to DB favorite", "Successful")
-                                showAlert("נשמר","במועדפים בהצלחה")
-                            }else{
-                                Log.e("Upload to DB favorite", "Failed")
-
-                            }
-                        }
+                    if (isLiked) unLike()
+                    else like()
                 }else{
-                    val i = Intent(this,ActivityMain::class.java)
-                    i.putExtra("Login","user need to log in")
-                    startActivity(i)
-                    finish()
+                    sendUserToLogin()
                 }
 
             }
             R.id.animal_page_btn_contact->{
-                //send to contact us page.
-
+                if (isUserLogin()){
+                    val i = Intent(this, ActivityContactUs::class.java)
+                    i.putExtra("from","animal page")
+                    startActivity(i)
+                }else{
+                    sendUserToLogin()
+                }
+            }
+            R.id.animal_page_btn_share->{
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+                sharingIntent.type = "text/plain"
+                val shareBody = """
+                    hey im ${animal?.name} and im ${animal?.age} old
+                    of type ${animal?.breed} and im usually here -  ${animal?.location}
+                    Do you wish to adopt me ? 
+                """.trimIndent()
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                startActivity(Intent.createChooser(sharingIntent, "Share via"))
             }
         }
     }
 
-    fun showAlert(title: String, msg: String){
+    private fun like() {
+        val obj = animal!!
+        Log.i("like animal id", obj.ID)
+        val ref = FirebaseDatabase.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        val map2 = mutableMapOf<String, String>()
+        map2[obj.ID] = obj.type
+        ref.reference.child("Israel-tst/users/$uid/favorite/")
+            .updateChildren(map2 as Map<String, Any>)
+            .addOnCompleteListener {
+                    task ->
+                if (task.isSuccessful){
+                    favoriteAnimalCollectionID.add(obj.ID)
+                    isLiked = !isLiked
+                    btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_full)
+                    Log.i("Upload to DB favorite", "Successful")
+                    showAlert("נשמר","במועדפים בהצלחה")
+                }else{
+                    Log.e("Upload to DB favorite", "Failed")
+
+                }
+            }
+    }
+
+    private fun unLike() {
+        val obj = animal!!
+        Log.i("UnLike animal id", obj.ID)
+        val ref = FirebaseDatabase.getInstance()
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        ref.reference.child("Israel-tst/users/$uid/favorite/${obj.ID}")
+            .removeValue()
+            .addOnCompleteListener {
+                    task ->
+                if (task.isSuccessful){
+                    isLiked = !isLiked
+                    btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_empty)
+                    Log.i("Removed from DB", "Successful")
+                    favoriteAnimalCollectionID.remove(obj.ID)
+                    showAlert("הוסר", "לא יופיע יותר במועדפים")
+                }else{
+                    Log.e("Removed from DB", "Failed")
+
+                }
+            }
+
+    }
+
+    private fun sendUserToLogin(){
+        val i = Intent(this,ActivityMain::class.java)
+        i.putExtra("Login","user need to log in")
+        startActivity(i)
+        finish()
+    }
+
+    private fun showAlert(title: String, msg: String){
         val alert = AlertDialog.Builder(this).create()
         alert.setTitle(title)
         alert.setMessage(msg)

@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">אימוץ</string>
+    <string name="app_name">Adopt Me</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="my_story_full">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
-
+    <string name="company_slogan_long">
+        אנו Theo-Tech
+        מאמינים בפשטות, נוחות, והנגשה.
+        נעזור לך לעבור משלב הרעיון, לעסק מצליח.
+        עם הדרכה ממוקדת, ושפה בגובה העיניים.
+    </string>
     <string name="title_upload_image_view"><b>אפשר להעלות עד שלוש תמונות</b></string>
     <string name="menu_home">בית</string>
     <string name="menu_favorite">מועדפים</string>
@@ -17,7 +22,7 @@
     <string name="txt_favorite">מועדפים</string>
     <string name="create_account"><b>צור חשבון</b></string>
 
-    <string name="contact_us">כתוב לנו</string>
+    <string name="contact_us"><u>כתוב לנו</u></string>
     <string name="my_adoption">מועמדים שלך לאימוץ</string>
     <string name="del_account">מחק משתמש</string>
     <string name="password">סיסמא</string>
@@ -28,7 +33,7 @@
     <string name="cat">חתול</string>
     <string name="dog">כלב</string>
 
-    <string name="location">מיקום - מחוזות</string>
+    <string name="location_title"><b>מיקום - מחוזות</b></string>
     <string name="north">צפון</string>
     <string name="haifa">חיפה</string>
     <string name="tlv">תל אביב</string>
@@ -41,7 +46,7 @@
     <string name="name">שמך</string>
     <string name="signup">חדש כאן? הרשמה</string>
     <string name="animal_story">אנא ספר לנו בקצרה על בעל החיים</string>
-    <string name="loc">מיקום</string>
+    <string name="location"><b>מיקום</b></string>
     <string name="number_for_call">מספר טלפון לאימוץ</string>
     <string name="age_m">גיל בחודשים</string>
     <string name="animal_name">שם בעל החיים</string>
@@ -52,7 +57,7 @@
     <string name="animal_breed_temp">סיבירי</string>
     <string name="animal_location_temp">תל אביב-יפו</string>
     <string name="animal_gender_temp">זכר</string>
-    <string name="animal_page_story_title"><b><u>סיפור</u></b></string>
+    <string name="animal_page_story_title"><b>קצת עלי..</b></string>
     <string name="weight_in_kilo">משקל בקילוגרם</string>
     <string name="animal_filter_age_3">שנתיים +</string>
     <string name="animal_filter_age_2">6 חודשים עד שנתיים</string>
@@ -61,6 +66,20 @@
     <string name="animal_filter_R1">טהור</string>
     <string name="animal_filter_R">גזע</string>
     <string name="setting_display_name">שם תצוגה</string>
+    <string name="heb_ages"><b>גילאים</b></string>
+    <string name="rank">נשמח לדירוג</string>
+    <string name="cats">חתולים</string>
+    <string name="dogs">כלבים</string>
+    <string name="Donate">תרומה</string>
+    <string name="age"><u>גיל</u></string>
+    <string name="sex"><u>מין</u></string>
+    <string name="weight"><u>משקל</u></string>
+    <string name="upload_date"><u>הועלה בתאריך</u></string>
+    <string name="city"><u>עיר</u></string>
+    <string name="call_owner">להתקשר לבעלים</string>
+    <string name="click_here">לחץ על ה +</string>
+    <string name="to_upload_new_animal">בשביל להעלות חיה חדשה למאגר האימוץ !</string>
+    <string name="loading">טוען</string>
 
 
 </resources>

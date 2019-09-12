@@ -6,12 +6,14 @@
         android:background="@drawable/fragment_filter_background"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RadioGroup>
+    <RadioGroup
+            android:layoutDirection="rtl"
+            >
         <TextView
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
                 android:textSize="24sp"
-                android:text="@string/location"
+                android:text="@string/location_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -21,9 +23,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/north"
-                android:layoutDirection="rtl"
                 android:checked="true"
-                android:layout_gravity="end"
         />
 
         <CheckBox
@@ -32,9 +32,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/haifa"
-                android:layoutDirection="rtl"
                 android:checked="true"
-                android:layout_gravity="end"
         />
 
         <CheckBox
@@ -43,8 +41,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/center"
-                android:layoutDirection="rtl"
-                android:layout_gravity="end"
                 android:checked="true"
         />
 
@@ -54,9 +50,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/tlv"
-                android:layoutDirection="rtl"
                 android:checked="true"
-                android:layout_gravity="end"
         />
 
         <CheckBox
@@ -65,9 +59,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/jerusalem"
-                android:layoutDirection="rtl"
                 android:checked="true"
-                android:layout_gravity="end"
         />
 
         <CheckBox
@@ -76,17 +68,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="דרום"
-                android:layoutDirection="rtl"
-                android:layout_gravity="end"
+                android:text="@string/south"
         />
     </RadioGroup>
-    <RadioGroup>
+    <RadioGroup
+            android:layoutDirection="rtl"
+            >
         <TextView
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
                 android:textSize="24sp"
-                android:text="גילאים"
+                android:text="@string/heb_ages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -96,9 +88,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/animal_filter_ag_1"
-                android:layoutDirection="rtl"
                 android:checked="true"
-                android:layout_gravity="end"
         />
         <CheckBox
                 android:id="@+id/checkboxA_6M_2Y"
@@ -106,8 +96,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/animal_filter_age_2"
-                android:layoutDirection="rtl"
-                android:layout_gravity="end"
                 android:checked="true"
         />
         <CheckBox
@@ -116,46 +104,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/animal_filter_age_3"
-                android:layoutDirection="rtl"
-                android:layout_gravity="end"
                 android:checked="true"
         />
     </RadioGroup>
-    <RadioGroup>
-        <TextView
-                android:layout_gravity="center"
-                android:layout_margin="12dp"
-                android:textSize="24sp"
-                android:text="@string/animal_filter_R"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <CheckBox
-                android:id="@+id/checkboxB_P"
-                android:layout_gravity="end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/animal_filter_R1"
-                android:layoutDirection="rtl"
-                android:checked="true"
-        />
-        <CheckBox
-                android:id="@+id/checkboxB_M"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="@string/animal_filter_R2"
-                android:layoutDirection="rtl"
-                android:layout_gravity="end"
-                android:checked="true"
-        />
 
-    </RadioGroup>
 
     <Button
         android:id="@+id/frag_btn_filter"
         android:background="@drawable/btn_round_corners_pink"
         android:text="@string/filter"
+        android:textSize="20sp"
+        android:layout_marginBottom="2sp"
     />
 
 </TableLayout>

@@ -14,11 +14,10 @@ import android.widget.*
 import bernat.oron.catadoption.model.*
 import androidx.appcompat.app.AlertDialog
 import bernat.oron.catadoption.activities.ActivityFavorite
-import com.google.firebase.auth.FirebaseAuth
 import android.net.Uri
-import bernat.oron.catadoption.activities.ActivitySplash
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.catType
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.dogType
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
 
 
 class FragmentUpload: Fragment() {
@@ -39,7 +38,7 @@ class FragmentUpload: Fragment() {
     lateinit var image3: ImageView
     lateinit var btnDone: Button
     private val locations = IsraelDistricts().getall()
-    private val allTypes = ActivitySplash.dogType
+    private val allTypes = dogType
 
     companion object{
         const val PICK_IMAGE_REQUEST_1 = 71
@@ -49,7 +48,6 @@ class FragmentUpload: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) :
         View? = inflater.inflate(R.layout.fragment_upload, container, false)
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -179,38 +177,42 @@ class FragmentUpload: Fragment() {
         image3.setOnClickListener(imageListener)
     }
     // validate inputs
-    private fun validate(): AnimalsFactory?{
+    private fun validate(): Animal?{
         //check name
-        val animalName = name.text.toString()
-        if(animalName.isEmpty() || animalName.isBlank()){
+        if(name.text.toString().isEmpty() || name.text.toString().isBlank()){
             name.error = "שם זה חובה.."
             return null
         }
+        val animalName = name.text.toString()
         //check age
-        val animalAge = ageEditText.text.toString()
-        if (animalAge.isEmpty()){
+        if (ageEditText.text.toString().isEmpty()){
             ageEditText.error = "אם הוא חי, יש לו גיל.."
             return null
         }
+        if (ageEditText.text.toString().toInt() > 108){
+            ageEditText.error = "הגזמת בגיל - עד גיל 9"
+            return null
+        }
+        val animalAge = ageEditText.text.toString()
         //check number
-        val phoneNumber = phoneNumberEditText.text.toString()
-        if (phoneNumber.count() != 10){
+        if (phoneNumberEditText.text.toString().count() != 10){
             this.phoneNumberEditText.error = "מספר ישראלי עם עשר ספרות"
             return null
         }
+        val phoneNumber = phoneNumberEditText.text.toString()
         //check location
-        val animalLocation = autoCompleteLocation.text.toString()
-        if (!locations.contains(animalLocation)){
+        if (!locations.contains(autoCompleteLocation.text.toString())){
             //not valid location
             autoCompleteLocation.error = "בחר מהרשימה"
             return null
         }
+        val animalLocation = autoCompleteLocation.text.toString()
         //check story
-        val animalStory = storyEditText.text.toString()
-        if (animalStory.count() < 10 || animalStory.count() > 80){
-            storyEditText.error = "סיפור בין 10 ל 80 תווים"
+        if (storyEditText.text.toString().count() < 10 || storyEditText.text.toString().count() > 400){
+            storyEditText.error = "ספר קצת יותר..."
             return null
         }
+        val animalStory = storyEditText.text.toString()
         //check breed
         if (animalBreedPicker.selectedItem == null){
             storyEditText.error = "בחר סוג מהרשימה"
@@ -236,8 +238,8 @@ class FragmentUpload: Fragment() {
         }
         val animalWeight = animalWeightPicker.selectedItem.toString().toInt()
 
-        //images we don't need to check, it's not a must/
-        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+
+        //images we don't need to check, it's not a must... yet
         if (animalType == "חתול"){
             return Cat(
                 ActivityFavorite.uniqueID,
@@ -252,7 +254,8 @@ class FragmentUpload: Fragment() {
                 phoneNumber,
                 null
             )
-        } else if (animalType == "כלב"){
+        }
+        else if (animalType == "כלב"){
             return Dog(
                 ActivityFavorite.uniqueID,
                 animalName,

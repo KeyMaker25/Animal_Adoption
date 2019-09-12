@@ -4,10 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import bernat.oron.catadoption.R
-import bernat.oron.catadoption.dao.AnimalRepository
-import bernat.oron.catadoption.model.AnimalsFactory
+import bernat.oron.catadoption.model.Animal
 import bernat.oron.catadoption.model.Cat
 import bernat.oron.catadoption.model.Dog
 import com.google.firebase.auth.FirebaseAuth
@@ -18,15 +16,6 @@ import com.google.firebase.database.ValueEventListener
 
 class ActivitySplash :AppCompatActivity(){
 
-    val ref = FirebaseDatabase.getInstance()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        initFromRoom()
-        init()
-    }
-
     companion object{
 
         fun isUserLogin() : Boolean {
@@ -36,47 +25,49 @@ class ActivitySplash :AppCompatActivity(){
             }
             return false
         }
-        val dogType= arrayListOf(
-            "בולדוג אנגלי" ,"בוקסר" ,"בייגלה" ,"גולדן רטריבר" ,
-            "דוברמן" ,"הסקי סיבירי" ,"פאג" , "פודל" ,"ציוואווה" ,
-            "רוטוויילר" ,"לברדור" ,"דני ענק" ,"רואה גרמני", "אחר"
-        )
-        val catType= arrayListOf(
-            "אמריקאי","פרסי" ,"סיאמי" ,"אביסיני" ,"סיבירי" ,
-            "הימליה" ,"בורמזי" ,"אקזוטי" , "רוסי","אחר"
-        )
 
-        var animalCollection = ArrayList<AnimalsFactory>()
-        var dogsCollection = ArrayList<AnimalsFactory>()
-        var catsCollection = ArrayList<AnimalsFactory>()
+        var dogType= arrayListOf("type")
+        var catType= arrayListOf("type")
+        var animalCollection = ArrayList<Animal>()
+        var dogsCollection = ArrayList<Animal>()
+        var catsCollection = ArrayList<Animal>()
         var uid = ""
 
-        var favoriteAnimalCollection = arrayListOf<String>()
-        var uploadAnimalCollection = arrayListOf<String>()
+        var favoriteAnimalCollectionID = arrayListOf<String>()
+        var uploadAnimalCollectionID = arrayListOf<String>()
     }
 
-    private fun initFromRoom(): Boolean{
-        val db = AnimalRepository(this).tasks
-        Log.i("db res",db.value.toString())
-        AnimalRepository(this).tasks.observe(this, Observer {
-            list ->
-            for (item in list){
-                Log.i("name: ",item.name)
-                Log.i("id: ",item.id)
-                Log.i("type: ",item.type)
+    val ref = FirebaseDatabase.getInstance()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+        initTypes()
+        init()
+    }
+
+    private fun initTypes() {
+        val typeRef = ref.reference.child("Israel-tst/")
+        typeRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                val children = p0.value as HashMap<String,Any>
+                dogType = children["dogTypes"] as ArrayList<String>
+                catType = children["catTypes"] as ArrayList<String>
+                Log.i(" Types number","Dogs ${dogType.size} types Cats = ${catType.size} types")
             }
+            override fun onCancelled(p0: DatabaseError) {
+                Log.e("Db error", p0.message)
+            }
+
         })
-        return false
     }
 
     private fun init(){
-        val animals = ref.reference.child("Israel-tst/animals")
+        val animals = ref.reference.child("Israel-prod/animals")
         animals.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 val children = p0.children
-                // This returns the correct child count...
-
-                Log.i("animals count: " ,p0.children.count().toString())
+                Log.i("animals count " ,p0.children.count().toString())
                 children.forEach {
                     val animal = it.value as MutableMap<String, Any>
                     if (animal["type"] == "Cat") {
@@ -118,8 +109,8 @@ class ActivitySplash :AppCompatActivity(){
             }
 
         })
-
         if (FirebaseAuth.getInstance().currentUser != null){
+            uid = FirebaseAuth.getInstance().currentUser!!.uid
             initFavoriteAndUploads()
         }
     }
@@ -127,21 +118,19 @@ class ActivitySplash :AppCompatActivity(){
     private fun initFavoriteAndUploads(){
         val favoriteRef = ref.reference.child("Israel-tst/users/$uid/")
         favoriteRef.addListenerForSingleValueEvent(object : ValueEventListener {
-
             override fun onDataChange(p0: DataSnapshot) {
-
-                p0.children.forEach {it->
-                    val map1 = it.value as MutableMap<String, Any>
-                    val uploadsMap = map1["uploads"] as MutableMap<String, Any>
-                    (map1["favorite"] as? MutableMap<String, Any>)?.forEach { id ->
-                        favoriteAnimalCollection.add(id.key)
-                    }
-                    uploadsMap.forEach { id ->
-                        uploadAnimalCollection.add(id.key)
-                    }
+                val map = p0.value as MutableMap<String, Any>
+                val uploadsMap = map["uploads"] as? MutableMap<String, Any>
+                val favoriteMap = map["favorite"] as? MutableMap<String, Any>
+                favoriteMap?.forEach { id ->
+                    favoriteAnimalCollectionID.add(id.key)
                 }
-                Log.i("upload count- ", uploadAnimalCollection.size.toString())
-                Log.i("favorite count- ", favoriteAnimalCollection.size.toString())
+                uploadsMap?.forEach { id ->
+                    uploadAnimalCollectionID.add(id.key)
+                }
+
+                Log.i("uploaded count ", uploadAnimalCollectionID.size.toString())
+                Log.i("favorite count ", favoriteAnimalCollectionID.size.toString())
             }
 
             override fun onCancelled(p0: DatabaseError) {

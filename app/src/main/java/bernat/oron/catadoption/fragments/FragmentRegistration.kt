@@ -1,10 +1,10 @@
-@file:Suppress("DEPRECATION")
-
 package bernat.oron.catadoption.fragments
 
 import android.widget.Toast
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.EditText
 import android.view.LayoutInflater
@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import bernat.oron.catadoption.R
+import bernat.oron.catadoption.activities.ActivitySplash
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
 import bernat.oron.catadoption.model.RegistrationInterface
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -58,7 +60,6 @@ class FragmentRegistration : Fragment() {
             if (isLogin){ // login
                 login()
             }else{ //sign up
-                Toast.makeText(context, "sign up click", Toast.LENGTH_LONG).show()
                 signup()
             }
         }
@@ -80,7 +81,7 @@ class FragmentRegistration : Fragment() {
         }
     }
 
-    fun setDisplayName(name: String){
+    private fun setDisplayName(name: String){
         if (auth.currentUser?.displayName == null){
             //open alert for choosing display name
             val userProfile = UserProfileChangeRequest.Builder().setDisplayName(name).build()
@@ -89,7 +90,7 @@ class FragmentRegistration : Fragment() {
 
     }
 
-    fun login(){
+    private fun login(){
         if (!validate(true)){
             onSignupFailed()
             return
@@ -113,9 +114,10 @@ class FragmentRegistration : Fragment() {
                 {
                     if (task.isSuccessful){
                         onSignupSuccess()
+                        startActivity(Intent(context,ActivitySplash::class.java))
                     }else{
                         onSignupFailed()
-                        println("error ${task.exception}")
+                        Log.e("error" ,task.exception.toString())
                     }
                     progressDialog.dismiss()
                 }, 2000
@@ -124,7 +126,7 @@ class FragmentRegistration : Fragment() {
 
     }
 
-    fun signup() {
+    private fun signup() {
         if (!validate(false)) {
             onSignupFailed()
             return
@@ -144,7 +146,6 @@ class FragmentRegistration : Fragment() {
         val email = emailText.text.toString()
         val password = passwordText.text.toString()
 
-        // TODO: Implement your own signup logic here.
         auth = FirebaseAuth.getInstance()
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
             task ->
@@ -167,13 +168,14 @@ class FragmentRegistration : Fragment() {
 
     fun onSignupSuccess() {
         fragmentInterfaceInterface?.didFinish(true)
-        Toast.makeText(context, "welcome ${auth.currentUser?.displayName}", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, " ברוך הבא ${auth.currentUser?.displayName}", Toast.LENGTH_LONG).show()
+        uid = auth.currentUser!!.uid
         signupButton.isEnabled = true
     }
 
     fun onSignupFailed() {
         fragmentInterfaceInterface?.didFinish(false)
-        Toast.makeText(context, "Login failed", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "התחברות נכשלה", Toast.LENGTH_LONG).show()
         signupButton.isEnabled = true
     }
 
@@ -185,21 +187,21 @@ class FragmentRegistration : Fragment() {
 
         if (!isLogin){
             if (name.isEmpty() || name.length < 3) {
-                nameText.error = "at least 3 characters"
+                nameText.error = "לפחות 3 תווים"
                 valid = false
             } else {
                 nameText.error = null
             }
         }
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailText.error = "enter a valid email address"
+            emailText.error = "הכנס כתובת אימייל תקינה בבקשה"
             valid = false
         } else {
             emailText.error = null
         }
 
         if (password.isEmpty() || password.length < 4 || password.length > 10) {
-            passwordText.error = "between 4 and 10 alphanumeric characters"
+            passwordText.error = "בין 4 ל 10 מספרים נומרים בבקשה"
             valid = false
         } else {
             passwordText.error = null

@@ -1,9 +1,9 @@
 package bernat.oron.catadoption.activities
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -16,7 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import bernat.oron.catadoption.adapters.AnimalAdapterV
+import bernat.oron.catadoption.adapters.AdapterVAnimal
 import bernat.oron.catadoption.model.FilterInterface
 import bernat.oron.catadoption.fragments.FragmentFilter
 import bernat.oron.catadoption.fragments.FragmentRegistration
@@ -28,13 +28,8 @@ import bernat.oron.catadoption.activities.ActivitySplash.Companion.isUserLogin
 import bernat.oron.catadoption.model.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlin.collections.ArrayList
 import kotlin.system.exitProcess
-
 
 class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInterface, FilterInterface {
 
@@ -53,7 +48,6 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
     lateinit var toolbar: Toolbar
     lateinit var rv: RecyclerView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -62,20 +56,21 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
         initCardView()
         initNavigation()
         initFragmentsAndListener()
+    }
+
+    override fun onStart() {
+        super.onStart()
         if (intent.getStringExtra("Login") == "user need to log in"){
             loginUser()
         }
-
     }
 
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        }   else if (!fragFilter.isHidden){
-            supportFragmentManager.beginTransaction().hide(fragFilter).commit()
-        }   else if(!fragRegister.isHidden){
-            supportFragmentManager.beginTransaction().hide(fragRegister).commit()
+        }   else if (!fragFilter.isHidden ||!fragRegister.isHidden){
+            cleanViewFromFrag()
         }   else {
             finishAffinity()
             exitProcess(0)
@@ -87,10 +82,10 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
         when (v?.id) {
             R.id.btn_nav_filter-> {
                 if (fragFilter.isHidden) {
-                    println("hidden")
+                    println("filter show")
                     supportFragmentManager.beginTransaction().show(fragFilter).commit()
                 } else {
-                    println("not hidden")
+                    println("filter hidden")
                     supportFragmentManager.beginTransaction().hide(fragFilter).commit()
                 }
             }
@@ -119,8 +114,14 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
                 }
             }
             R.id.nav_logout ->{
-                auth.signOut()
-                Toast.makeText(applicationContext,"מתנתק", Toast.LENGTH_LONG).show()
+                if (isUserLogin()){
+                    Toast.makeText(applicationContext," ביי ${auth.currentUser?.displayName}", Toast.LENGTH_LONG).show()
+                    auth.signOut()
+                    initTitleName()
+                }else{
+                    Toast.makeText(applicationContext,"...להתנתק? קודם תתחבר", Toast.LENGTH_LONG).show()
+                }
+
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -133,57 +134,58 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
         }
     }
 
-    /**
-     9 - remove pure breed of animal
-     10 - remove mix breed of animal
-    **/
     override fun didFilter(checkItems: ArrayList<Int>) {
         cleanViewFromFrag()
-        if (checkItems.isNotEmpty()){
-            //TODO: filter out the animals with matching category
+        Log.i("items to remove", checkItems.count().toString())
+        if (!checkItems.isNullOrEmpty()){
             var filteredAnimalCollection = animalCollection
             for (remove in checkItems){
                when(remove){
                    0 ->{ //0 - remove area north
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().North.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area north")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().North.contains(it.location) } as ArrayList<Animal>
                    }
                    1 ->{// 1 - remove area haifa
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Haifa.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area haifa")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Haifa.contains(it.location) } as ArrayList<Animal>
                    }
                    2 ->{// 2 - remove area center
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Center.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area center")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Center.contains(it.location) } as ArrayList<Animal>
                    }
                    3 ->{// 3 - remove area tel-Aviv
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().TelAviv.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area tel-Aviv")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().TelAviv.contains(it.location) } as ArrayList<Animal>
                    }
                    4 ->{// 4 - remove area jerusalem
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Jeruzalem.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area jerusalem")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().Jeruzalem.contains(it.location) } as ArrayList<Animal>
                    }
                    5 ->{// 5 - remove area south
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().South.contains(it.location) } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","area south")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { IsraelDistricts().South.contains(it.location) } as ArrayList<Animal>
                    }
                    6 ->{//6 - remove age 1-6 mouths
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong()  <= 6.toLong() } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","age 1-6 mouths")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong()  <= 6.toLong() } as ArrayList<Animal>
                    }
                    7 ->{//7 - remove age 6mouths - 2years
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong() >= 6.toLong() && it.age.toLong() <= 24.toLong() } as ArrayList<AnimalsFactory>
+                       Log.i("remove ","age 6mouths - 2years")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong() >= 6.toLong() && it.age.toLong() <= 24.toLong() } as ArrayList<Animal>
                    }
                    8 ->{//8 - remove age 2years +
-                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong() >= 24.toLong() } as ArrayList<AnimalsFactory>
-                   }
-                   9 ->{
-
-                   }
-                   10 ->{
-
+                       Log.i("remove ","area age 2years +")
+                       filteredAnimalCollection = filteredAnimalCollection.filterNot { it.age.toLong() >= 24.toLong() } as ArrayList<Animal>
                    }
                }
 
             }
-            (rv.adapter as AnimalAdapterV).setList(filteredAnimalCollection)
+            Log.i("filter","removed ${animalCollection.size - filteredAnimalCollection.size} items")
+            (rv.adapter as AdapterVAnimal).setList(filteredAnimalCollection)
             rv.adapter?.notifyDataSetChanged()
-        }else{
-            (rv.adapter as AnimalAdapterV).setList(animalCollection)
+        } else {
+            Log.i("filter","keep all")
+            (rv.adapter as AdapterVAnimal).setList(animalCollection)
             rv.adapter?.notifyDataSetChanged()
         }
 
@@ -198,7 +200,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
         if (isUserLogin()){
             txtTitle.text = auth.currentUser?.displayName
         } else {
-            txtTitle.text = "היי משתמש חדש"
+            txtTitle.text = ""
         }
     }
 
@@ -222,41 +224,42 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
         txtLogout = findViewById(R.id.nav_logout)
         txtLogout.setOnClickListener(this)
 
-        var clickCat = true
-        var clickDog = true
-        val onClick = View.OnClickListener{ v ->
+        // true - current show all animal false - currently show one animal
+        var didClick = true
+        val onClick = View.OnClickListener { v ->
             val rv = findViewById<RecyclerView>(R.id.my_recycler_view)
-            if (v.id == R.id.btn_txt_cats){
-                if (clickCat){
-                    Snackbar.make(v,"רק חתולים",Snackbar.LENGTH_SHORT).show()
-                    catsCollection.let { (rv.adapter as AnimalAdapterV).setList(it) }
-                }else{
-                    Snackbar.make(v,"כולם",Snackbar.LENGTH_SHORT).show()
-                    (rv.adapter as AnimalAdapterV).setList(animalCollection)
+            when(didClick){
+                true -> {
+                    if (v.id == R.id.btn_txt_dogs) {
+                        dogsCollection.let { (rv.adapter as AdapterVAnimal).setList(it) }
+                        btnCatSelection.alpha = 0.4F
+                        Snackbar.make(v,"רק כלבים",Snackbar.LENGTH_SHORT).show()
+                    }
+                    if (v.id == R.id.btn_txt_cats){
+                        catsCollection.let { (rv.adapter as AdapterVAnimal).setList(it) }
+                        btnDogSelection.alpha = 0.4F
+                        Snackbar.make(v,"רק חתולים",Snackbar.LENGTH_SHORT).show()
+                    }
+                    didClick = false
                 }
-                clickCat = !clickCat
-            } else {
-                if (clickDog){
-                    Snackbar.make(v,"רק כלבים",Snackbar.LENGTH_SHORT).show()
-                    dogsCollection.let { (rv.adapter as AnimalAdapterV).setList(it) }
-                }else{
+                false -> {
+                    (rv.adapter as AdapterVAnimal).setList(animalCollection)
+                    btnCatSelection.alpha = 1.0F
+                    btnDogSelection.alpha = 1.0F
                     Snackbar.make(v,"כולם",Snackbar.LENGTH_SHORT).show()
-                    (rv.adapter as AnimalAdapterV).setList(animalCollection)
+                    didClick = true
                 }
-                clickDog= !clickDog
             }
             rv.adapter?.notifyDataSetChanged()
         }
-
         btnCatSelection.setOnClickListener(onClick)
         btnDogSelection.setOnClickListener(onClick)
-
     }
 
     private fun initCardView(){
         rv = findViewById(R.id.my_recycler_view)
         rv.layoutManager = LinearLayoutManager(this)
-        val adapter = AnimalAdapterV(
+        val adapter = AdapterVAnimal(
             animalCollection,
             this
         )
@@ -287,16 +290,20 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
     private fun cleanViewFromFrag(){
         if (!fragFilter.isHidden){
             supportFragmentManager.beginTransaction().hide(fragFilter).commit()
+            toolbar.visibility = View.VISIBLE
         }
         if (!fragRegister.isHidden){
             supportFragmentManager.beginTransaction().hide(fragRegister).commit()
+            toolbar.visibility = View.VISIBLE
         }
     }
 
     private fun loginUser() {
         if (auth.currentUser == null){
+            Log.i("user","NULL")
             if (fragRegister.isHidden) {
                 supportFragmentManager.beginTransaction().show(fragRegister).commit()
+                toolbar.visibility = View.INVISIBLE
             } else {
                 supportFragmentManager.beginTransaction().hide(fragRegister).commit()
             }

@@ -9,37 +9,40 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import bernat.oron.catadoption.R
-import bernat.oron.catadoption.model.AnimalsFactory
+import bernat.oron.catadoption.activities.ActivitySplash
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.animalCollection
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
+import bernat.oron.catadoption.model.Animal
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 
 
-class AnimalAdapterH(val items: ArrayList<AnimalsFactory>, val context: Context) : RecyclerView.Adapter<AnimalAdapterH.ViewHolder>()  {
+class AdapterHAnimal(val items: ArrayList<String>, val context: Context) : RecyclerView.Adapter<AdapterHAnimal.ViewHolder>()  {
 
-    var onItemClick: ((AnimalsFactory) -> Unit)? = null
+    var onItemClick: ((Animal) -> Unit)? = null
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_view_card_horizontal, p0, false))
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val images = items[p1].image
+        val item = animalCollection.firstOrNull{ it.ID == items[p1]}
+        val images = item?.image
         val storageReference = FirebaseStorage.getInstance()
         if (images != null) {
-            Log.i("image uri", "uri =  ${images.random()}")
             val image = storageReference.reference.child(images.random())
-            Log.i("images ref", "$image")
             val ONE_MEGABYTE: Long = 1024 * 1024
             image.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                Glide.with(context)
+
+                Glide.with(context.applicationContext)
                     .load(it)
                     .into(p0.itemImage)
             }.addOnFailureListener {
                 Log.e("images from DB","failed to fetch")
             }
         }
-        p0.itemName.text = items[p1].name
-        p0.itemLocation.text = items[p1].location
+        p0.itemName.text = item?.name
+        p0.itemLocation.text = item?.location
 
     }
 
@@ -58,7 +61,7 @@ class AnimalAdapterH(val items: ArrayList<AnimalsFactory>, val context: Context)
 
         init {
             itemView.setOnClickListener {
-                onItemClick?.invoke(items[adapterPosition])
+                onItemClick?.invoke(animalCollection.firstOrNull{ it.ID == items[adapterPosition]}!!)
             }
         }
 

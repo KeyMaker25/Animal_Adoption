@@ -58,13 +58,7 @@ class ActivitySetting : AppCompatActivity() {
 
         }
 
-
-
-
     }
-
-
-
 
 
 

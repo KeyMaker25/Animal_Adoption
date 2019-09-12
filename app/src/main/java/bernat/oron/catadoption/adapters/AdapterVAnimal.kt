@@ -9,33 +9,27 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import bernat.oron.catadoption.R
-import bernat.oron.catadoption.model.AnimalsFactory
+import bernat.oron.catadoption.model.Animal
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
-import androidx.annotation.NonNull
-import com.google.android.gms.tasks.OnFailureListener
-import android.util.DisplayMetrics
-import android.graphics.BitmapFactory
 import kotlin.math.roundToInt
 
-class AnimalAdapterV(var items: ArrayList<AnimalsFactory>, val context: Context) : RecyclerView.Adapter<AnimalAdapterV.ViewHolder>()  {
+class AdapterVAnimal(var items: ArrayList<Animal>, val context: Context) : RecyclerView.Adapter<AdapterVAnimal.ViewHolder>()  {
 
-    var onItemClick: ((AnimalsFactory) -> Unit)? = null
+    var onItemClick: ((Animal) -> Unit)? = null
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_view_card_vertical, p0, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_view_card_v_2, p0, false))
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val images =items[p1].image
         val storageReference = FirebaseStorage.getInstance()
         if (images != null) {
-            Log.i("image uri", "uri =  ${images.random()}")
             val image = storageReference.reference.child(images.random())
-            Log.i("images ref", "$image")
             val ONE_MEGABYTE: Long = 1024 * 1024
             image.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                Glide.with(context)
+                Glide.with(context.applicationContext)
                     .load(it)
                     .into(p0.itemImage)
             }.addOnFailureListener {
@@ -54,7 +48,6 @@ class AnimalAdapterV(var items: ArrayList<AnimalsFactory>, val context: Context)
             age += " חודשים"
         }
 
-        p0.itemAge.text = age
         p0.itemGender.text = items[p1].gender
         p0.itemLocation.text = items[p1].location
         p0.itemName.text = items[p1].name
@@ -65,21 +58,16 @@ class AnimalAdapterV(var items: ArrayList<AnimalsFactory>, val context: Context)
         return items.size
     }
 
-    fun setList(list :ArrayList<AnimalsFactory>){
+    fun setList(list :ArrayList<Animal>){
         this.items = list
         this.notifyDataSetChanged()
     }
-
-
-
-
 
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 
         // Holds the TextView that will add each animal to
         val itemImage: ImageView = view.findViewById(R.id.recycler_view_v_image_view)
         val itemName: TextView = view.findViewById(R.id.recycler_view_v_txt_name)
-        val itemAge: TextView = view.findViewById(R.id.recycler_view_v_txt_age)
         val itemGender: TextView = view.findViewById(R.id.recycler_view_v_txt_gender)
         val itemLocation: TextView = view.findViewById(R.id.recycler_view_v_txt_location)
 
@@ -88,8 +76,6 @@ class AnimalAdapterV(var items: ArrayList<AnimalsFactory>, val context: Context)
                 onItemClick?.invoke(items[adapterPosition])
             }
         }
-
-
 
     }
 }

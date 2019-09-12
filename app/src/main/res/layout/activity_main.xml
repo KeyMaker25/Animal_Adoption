@@ -19,7 +19,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-
     >
             <LinearLayout
                     android:gravity="center"
@@ -32,7 +31,7 @@
                         android:id="@+id/btn_nav_filter"
                         android:text="@string/filter"
                         android:layout_margin="12dp"
-                        android:background="@drawable/btn_round_corners_green"
+                        android:background="@drawable/btn_round_corners_purple"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -40,12 +39,12 @@
                         android:id="@+id/btn_nav_favorite"
                         android:text="@string/txt_favorite"
                         android:layout_margin="12dp"
-                        android:background="@drawable/btn_round_corners_green"
+                        android:background="@drawable/btn_round_corners_purple"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"

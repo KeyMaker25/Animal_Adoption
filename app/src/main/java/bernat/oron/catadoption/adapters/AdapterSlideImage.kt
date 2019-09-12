@@ -32,12 +32,10 @@ class AdapterSlideImage(val context: Context, val imageModelArrayList: ArrayList
         val stringImage: String? = imageModelArrayList[position]
         val storageReference = FirebaseStorage.getInstance()
         if (stringImage != null) {
-            Log.i("image uri", "uri =  $stringImage")
             val ref = storageReference.reference.child(stringImage)
-            Log.i("images ref", "$ref")
             val ONE_MEGABYTE: Long = 1024 * 1024
             ref.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-                Glide.with(context)
+                Glide.with(context.applicationContext)
                     .load(it)
                     .into(imageView)
                 view.addView(imageLayout, 0)
