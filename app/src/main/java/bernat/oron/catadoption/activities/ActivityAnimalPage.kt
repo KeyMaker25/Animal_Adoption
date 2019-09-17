@@ -1,14 +1,14 @@
 package bernat.oron.catadoption.activities
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
+import android.widget.*
 import bernat.oron.catadoption.R
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.viewpagerindicator.CirclePageIndicator
 import java.util.*
 import kotlin.collections.ArrayList
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import java.io.ByteArrayOutputStream
 
 
 class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
@@ -93,14 +96,26 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
 
     private fun initImages() {
         mPager = findViewById(R.id.pager)
+        val adapter = AdapterSlideImage(this, stringImages!!)
+        adapter.onItemClick = {
+                im->
+            val intent = Intent(applicationContext,ActivityFullScreen::class.java)
 
-        mPager?.adapter = AdapterSlideImage(this, stringImages!!)
+            intent.putExtra("image",im)
+            startActivity(intent)
+
+        }
+        mPager?.adapter = adapter
         val indicator = findViewById<CirclePageIndicator>(R.id.indicator)
         indicator.setViewPager(mPager)
         val density = resources.displayMetrics.density
         //Set circle indicator radius
         indicator.radius = 5 * density
+        // change the picture every 2.5 second
+        //switchWithDelay(2000, 2500)
+    }
 
+    private fun switchWithDelay(delay: Long, peroid: Long) {
         NUM_PAGES = stringImages!!.count()
         val handler = Handler()
         val run = Runnable {
@@ -114,10 +129,10 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
             override fun run() {
                 handler.post(run)
             }
-        }, 2500, 2500)
+        }, 2000, 2500)
 
         // Pager listener over indicator
-        indicator.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        findViewById<CirclePageIndicator>(R.id.indicator).setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
                 currentPage = position
             }
@@ -132,11 +147,17 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.animal_page_btn_call->{
-                //open phone dialer, with animal owners number
+            R.id.animal_page_btn_call->{                if (isUserLogin()){
                 val intent = Intent(Intent.ACTION_DIAL)
                 intent.data = Uri.parse("tel:${animal!!.phone}")
                 startActivity(intent)
+            }else{
+                showAlert("סליחה","צריך להרשם לפני יצירת קשר",DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                    sendUserToLogin()
+                })
+
+            }
             }
             R.id.animal_page_btn_add_favorite->{
                 if (isUserLogin()){
@@ -187,7 +208,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
                     isLiked = !isLiked
                     btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_full)
                     Log.i("Upload to DB favorite", "Successful")
-                    showAlert("נשמר","במועדפים בהצלחה")
+                    showAlert("נשמר","במועדפים בהצלחה",null)
                 }else{
                     Log.e("Upload to DB favorite", "Failed")
 
@@ -209,7 +230,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
                     btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_empty)
                     Log.i("Removed from DB", "Successful")
                     favoriteAnimalCollectionID.remove(obj.ID)
-                    showAlert("הוסר", "לא יופיע יותר במועדפים")
+                    showAlert("הוסר", "לא יופיע יותר במועדפים",null)
                 }else{
                     Log.e("Removed from DB", "Failed")
 
@@ -225,13 +246,18 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         finish()
     }
 
-    private fun showAlert(title: String, msg: String){
+    private fun showAlert(title: String, msg: String, listener: DialogInterface.OnClickListener?){
         val alert = AlertDialog.Builder(this).create()
         alert.setTitle(title)
         alert.setMessage(msg)
-        alert.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok") {
-            _,_->
-            alert.dismiss()
+        if (listener == null)
+        {
+            alert.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok") {
+                    _,_->
+                alert.dismiss()
+            }
+        }else{
+            alert.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok", listener)
         }
         alert.show()
     }

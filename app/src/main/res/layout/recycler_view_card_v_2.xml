@@ -6,11 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="230sp"
         android:layout_margin="5dp"
-        android:padding="12dp"
         card_view:cardBackgroundColor="@color/main2Trans"
-        card_view:cardCornerRadius="8dp"
+        card_view:cardCornerRadius="4dp"
         card_view:cardElevation="2dp"
-        card_view:contentPadding="4dp"
+        card_view:contentPadding="2dp"
         >
 
     <ImageView
@@ -31,11 +30,11 @@
             >
         <TextView
                 android:id="@+id/recycler_view_v_txt_location"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:layout_margin="8dp"
                 android:text="@string/animal_name_temp"
                 android:textSize="16sp"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:layout_width="0sp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -43,7 +42,7 @@
         <TextView
                 android:id="@+id/recycler_view_v_txt_gender"
                 android:textSize="16sp"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:layout_margin="8dp"
                 android:text="@string/animal_name_temp"
                 android:layout_weight="1"
@@ -53,7 +52,7 @@
                 />
         <TextView
                 android:id="@+id/recycler_view_v_txt_name"
-                android:textColor="#000000"
+                android:textColor="#000"
                 android:layout_margin="8dp"
                 android:text="@string/animal_name_temp"
                 android:textSize="16sp"

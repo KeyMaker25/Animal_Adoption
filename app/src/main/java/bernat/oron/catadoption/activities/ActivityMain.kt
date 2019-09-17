@@ -83,6 +83,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
             R.id.btn_nav_filter-> {
                 if (fragFilter.isHidden) {
                     println("filter show")
+                    toolbar.visibility = View.INVISIBLE
                     supportFragmentManager.beginTransaction().show(fragFilter).commit()
                 } else {
                     println("filter hidden")
@@ -258,6 +259,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
 
     private fun initCardView(){
         rv = findViewById(R.id.my_recycler_view)
+        rv.setHasFixedSize(true)
         rv.layoutManager = LinearLayoutManager(this)
         val adapter = AdapterVAnimal(
             animalCollection,

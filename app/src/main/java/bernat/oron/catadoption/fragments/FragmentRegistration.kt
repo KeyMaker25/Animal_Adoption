@@ -114,7 +114,7 @@ class FragmentRegistration : Fragment() {
                 {
                     if (task.isSuccessful){
                         onSignupSuccess()
-                        startActivity(Intent(context,ActivitySplash::class.java))
+                        startActivity(Intent(context?.applicationContext,ActivitySplash::class.java))
                     }else{
                         onSignupFailed()
                         Log.e("error" ,task.exception.toString())

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+        android:id="@+id/animal_page_scroll_view"
+
         android:layoutDirection="rtl"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
@@ -8,22 +10,22 @@
         android:scrollbars="none"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-
-            android:id="@id/top_container"
+    <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/animal_page_container_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
         <RelativeLayout
-                android:id="@+id/top_container"
-                android:layout_width="fill_parent"
+                android:id="@+id/animal_page_image_container_relative_layout"
+                android:layout_width="match_parent"
                 android:layout_height="300sp" >
 
             <androidx.viewpager.widget.ViewPager
                     android:id="@+id/pager"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentTop="true"/>
 
             <com.viewpagerindicator.CirclePageIndicator
@@ -43,7 +45,6 @@
 
         <LinearLayout
                 android:background="@color/colorPrimaryLight"
-                android:layout_below="@+id/top_container"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,6 +55,17 @@
                     android:layout_height="65sp"
                     android:background="@color/main2"
                     android:orientation="horizontal">
+
+
+                <TextView
+                        android:id="@+id/animal_txt_page_name"
+
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="28sp" />
 
                 <Button
                         android:id="@+id/animal_page_btn_share"
@@ -72,15 +84,6 @@
                         android:background="@drawable/btn_like_star_empty"
                         android:gravity="center"
                         android:padding="16sp" />
-
-                <TextView
-                        android:id="@+id/animal_txt_page_name"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="28sp" />
 
 
             </LinearLayout>
@@ -289,6 +292,6 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>
