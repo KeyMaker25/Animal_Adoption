@@ -27,6 +27,7 @@ class ActivitySplash :AppCompatActivity(){
             return false
         }
 
+        var allTypes = arrayListOf("")
         var dogType= arrayListOf("type")
         var catType= arrayListOf("type")
         var animalCollection = ArrayList<Animal>()
@@ -57,6 +58,8 @@ class ActivitySplash :AppCompatActivity(){
                 dogType = children["dogTypes"] as ArrayList<String>
                 catType = children["catTypes"] as ArrayList<String>
                 Log.i(" Types number","Dogs ${dogType.size} types Cats = ${catType.size} types")
+                allTypes.addAll(dogType)
+                allTypes.addAll(catType)
             }
             override fun onCancelled(p0: DatabaseError) {
                 Log.e("Db error", p0.message)

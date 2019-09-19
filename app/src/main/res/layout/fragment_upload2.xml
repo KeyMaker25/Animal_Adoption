@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl"
+        >
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/main2"
+            >
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/auto_complete_location"
+                android:textAlignment="center"
+                android:hint="@string/location"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                />
+
+        <LinearLayout
+                android:layout_margin="12sp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                >
+
+            <Spinner
+                    android:id="@+id/fragment_animal_picker_weight"
+
+                    android:textDirection="anyRtl"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    />
+
+
+            <TextView
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weight_in_kilo"
+                    android:textAlignment="center"
+                    android:padding="2sp"
+                    />
+
+        </LinearLayout>
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_phone"
+
+                android:inputType="phone"
+                android:hint="@string/number_for_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                />
+
+        <EditText
+                android:id="@+id/fragment_upload_edit_story"
+
+                android:lines="4"
+                android:hint="@string/animal_story"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="12dp"
+                android:minLines="2"
+                android:maxLines="6"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:scrollbars="vertical"
+                />
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/btn_next"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="הבא..."
+            android:textColor="#fff"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="26dp"
+            android:textSize="16sp"
+            />
+
+    <TextView
+            android:id="@+id/btn_back"
+
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textColor="#fff"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="26dp"
+            />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

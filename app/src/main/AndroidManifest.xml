@@ -62,6 +62,9 @@
                 android:name=".activities.ActivityFullScreen"
                 android:theme="@style/AppTheme.NoActionBar"
                 />
+        <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".activities.ActivityUploadAnimal" />
 
     </application>
 </manifest>

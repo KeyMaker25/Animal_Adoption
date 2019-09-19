@@ -9,11 +9,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +29,6 @@ import bernat.oron.catadoption.model.UploadNewAnimalInterface
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_favorite.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.*
@@ -53,6 +50,7 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
     private var arrayOfImages = arrayListOf<Bitmap>()
 
     private var progressDialog: ProgressDialog? = null
+
 
     companion object{
         var uniqueID = ""
@@ -85,6 +83,11 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
         val v = layoutInflater.inflate(R.layout.activity_favorite_blank,null)
         if ((recFavorite.adapter as AdapterHAnimal).items.isEmpty() &&
             (recMyAnimal.adapter as AdapterHAnimal).items.isEmpty()){
+            val contactUs = v.findViewById<TextView>(R.id.click_here_contact)
+            contactUs.setOnClickListener {
+                val intent = Intent(this,ActivityContactUs::class.java)
+                startActivity(intent)
+            }
             titleMyFavorite.visibility = View.GONE
             titleMyUploads.visibility = View.GONE
         }else if ((recFavorite.adapter as AdapterHAnimal).items.isEmpty()) {
@@ -113,20 +116,9 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
     }
 
     private fun initFloatingBtn() {
-        fragUpload = FragmentUpload()
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container_fav, fragUpload)
-            .hide(fragUpload).commit()
-        //this is the btn for uploading (after register) a new animal for adoption
         btnFloating.setOnClickListener {
-
-            fragUpload.event = this
-            titleMyFavorite.text = "הוספת בעל חיים לאימוץ"
-
-            supportFragmentManager.beginTransaction()
-                .show(fragUpload).commit()
-            //init id for uploaded(?) animal
             uniqueID = UUID.randomUUID().toString().replace("-","")
+            startActivity(Intent(applicationContext, ActivityUploadAnimal::class.java))
         }
     }
 
@@ -154,15 +146,6 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
         recFavorite.adapter = adapterFavorite
         recMyAnimal.adapter = adapterUploads
 
-    }
-
-    override fun onBackPressed() {
-        if (fragUpload.isHidden){
-            super.onBackPressed()
-        }else{
-            supportFragmentManager.beginTransaction().hide(fragUpload).commit()
-            titleMyFavorite.text = "מועדפים"
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

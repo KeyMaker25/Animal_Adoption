@@ -4,7 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="my_story_full">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
     <string name="company_slogan_long">
-        אנו Theo-Tech
+        אנו ב-Theo Tech
         מאמינים בפשטות, נוחות, והנגשה.
         נעזור לך לעבור משלב הרעיון, לעסק מצליח.
         עם הדרכה ממוקדת, ושפה בגובה העיניים.
@@ -80,6 +80,16 @@
     <string name="click_here">לחץ על ה +</string>
     <string name="to_upload_new_animal">בשביל להעלות חיה חדשה למאגר האימוץ !</string>
     <string name="loading">טוען</string>
+    <string name="click_here_heb"><u>לחץ כאן ליצרת קשר</u></string>
+    <string name="animal_type">סוג</string>
+    <string name="time_to_upload_photos">
+        עכשיו זה זמן התמונות,
+        ניתן עד  3 , ומומלץ  3 !
+        תמונות ישפרו פי 6, את הסיכוי של חברינו
+        למצוא בעלים.
 
+        השתדלו להעלות תמונות ברורות וחמודות
+    </string>
+    <string name="back">אחורה</string>
 
 </resources>

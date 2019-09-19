@@ -10,3 +10,8 @@ interface FilterInterface {
 interface UploadNewAnimalInterface{
     fun newAnimal(animal: Animal)
 }
+
+interface PagerMoveInterface{
+    fun moveNext(name: String, age: String, type: String, breed: String, gender: String)
+    fun moveBack()
+}

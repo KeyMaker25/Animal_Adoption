@@ -22,10 +22,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.viewpagerindicator.CirclePageIndicator
 import java.util.*
 import kotlin.collections.ArrayList
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import java.io.ByteArrayOutputStream
-
 
 class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
 
@@ -100,7 +96,6 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         adapter.onItemClick = {
                 im->
             val intent = Intent(applicationContext,ActivityFullScreen::class.java)
-
             intent.putExtra("image",im)
             startActivity(intent)
 

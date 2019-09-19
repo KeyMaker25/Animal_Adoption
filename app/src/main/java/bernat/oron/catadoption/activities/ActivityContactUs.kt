@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import bernat.oron.catadoption.R
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
@@ -48,22 +49,14 @@ class ActivityContactUs : AppCompatActivity(){
                 val info = userTxt.text.toString()
                 if (info.count() > 5 ){
                     //less then 5 char ... nothing to send //
-                    val ref = FirebaseDatabase.getInstance()
-                    val timeDate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().time)
-                    val map = mutableMapOf<String,String>()
-                    map[timeDate] = info
-                    ref.reference.child("Israel-tst/commands/$uid")
-                        .updateChildren(map as Map<String, Any>)
-                        .addOnCompleteListener {
-                                task ->
-                            if (task.isSuccessful){
-                                Toast.makeText(this,"תודה ! המידע נשלח", Toast.LENGTH_LONG).show()
-                                Log.i("send info", "Successfully")
+                    val intent = Intent(Intent.ACTION_SENDTO)
+                    intent.putExtra(Intent.EXTRA_SUBJECT,
+                        "${FirebaseAuth.getInstance().currentUser?.email}  ${FirebaseAuth.getInstance().currentUser?.displayName}")
+                    intent.putExtra(Intent.EXTRA_TEXT, info)
 
-                            }else{
-                                Log.e("send info", "Failed")
-                            }
-                        }
+                    intent.data = Uri.parse("mailto:theo.tech.solutionsil@gmail.com")
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
                 }
                 android.os.Handler().postDelayed({
                     super.onBackPressed()

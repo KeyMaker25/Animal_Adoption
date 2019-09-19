@@ -20,7 +20,7 @@ import bernat.oron.catadoption.activities.ActivitySplash.Companion.dogType
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
 
 
-class FragmentUpload: Fragment() {
+class FragmentUpload(position: Int?) : Fragment() {
 
     lateinit var event: UploadNewAnimalInterface
     lateinit var animalTypePicker : Spinner
@@ -37,8 +37,8 @@ class FragmentUpload: Fragment() {
     lateinit var image2: ImageView
     lateinit var image3: ImageView
     lateinit var btnDone: Button
-    private val locations = IsraelDistricts().getall()
-    private val allTypes = dogType
+
+
 
     companion object{
         const val PICK_IMAGE_REQUEST_1 = 71
@@ -52,6 +52,8 @@ class FragmentUpload: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnDone = view.findViewById(R.id.btn_done)
+
+
         btnDone.setOnClickListener{
             if (validate() != null){
                 event.newAnimal(validate()!!)
@@ -100,10 +102,10 @@ class FragmentUpload: Fragment() {
     }
 
     private fun initSpinners(view: View) {
-        allTypes.addAll(catType)
+
 
         autoCompleteLocation = view.findViewById(R.id.auto_complete_location)
-        autoCompleteLocation.setAdapter(ArrayAdapter(context!!, R.layout.select_dialog_item, locations))
+
 
         animalTypePicker = view.findViewById(R.id.fragment_animal_picker_type)
         animalTypePicker.adapter = ArrayAdapter(context!!,R.layout.support_simple_spinner_dropdown_item,arrayListOf("כלב", "חתול"))
@@ -200,12 +202,7 @@ class FragmentUpload: Fragment() {
             return null
         }
         val phoneNumber = phoneNumberEditText.text.toString()
-        //check location
-        if (!locations.contains(autoCompleteLocation.text.toString())){
-            //not valid location
-            autoCompleteLocation.error = "בחר מהרשימה"
-            return null
-        }
+
         val animalLocation = autoCompleteLocation.text.toString()
         //check story
         if (storyEditText.text.toString().count() < 10 || storyEditText.text.toString().count() > 400){
