@@ -9,7 +9,7 @@
         נעזור לך לעבור משלב הרעיון, לעסק מצליח.
         עם הדרכה ממוקדת, ושפה בגובה העיניים.
     </string>
-    <string name="title_upload_image_view"><b>אפשר להעלות עד שלוש תמונות</b></string>
+    <string name="title_upload_image_view"><b> ניתן להעלות עד שלוש תמונות </b></string>
     <string name="menu_home">בית</string>
     <string name="menu_favorite">מועדפים</string>
     <string name="menu_tools">הגדרות</string>
@@ -45,7 +45,7 @@
     <string name="email">אימייל</string>
     <string name="name">שמך</string>
     <string name="signup">חדש כאן? הרשמה</string>
-    <string name="animal_story">אנא ספר לנו בקצרה על בעל החיים</string>
+    <string name="animal_story">ספר לנו בקצרה על בעל החיים</string>
     <string name="location"><b>מיקום</b></string>
     <string name="number_for_call">מספר טלפון לאימוץ</string>
     <string name="age_m">גיל בחודשים</string>
@@ -83,13 +83,12 @@
     <string name="click_here_heb"><u>לחץ כאן ליצרת קשר</u></string>
     <string name="animal_type">סוג</string>
     <string name="time_to_upload_photos">
-        עכשיו זה זמן התמונות,
-        ניתן עד  3 , ומומלץ  3 !
-        תמונות ישפרו פי 6, את הסיכוי של חברינו
-        למצוא בעלים.
-
+        עכשיו זה זמן התמונות ניתן עד  3 , ומומלץ  3 !
+        תמונות יעזרו לחברינו למצוא בית
+        פי 6 מהר יותר !
         השתדלו להעלות תמונות ברורות וחמודות
     </string>
-    <string name="back">אחורה</string>
+    <string name="Back">חזור</string>
+    <string name="Next">המשך</string>
 
 </resources>

@@ -12,6 +12,12 @@ interface UploadNewAnimalInterface{
 }
 
 interface PagerMoveInterface{
-    fun moveNext(name: String, age: String, type: String, breed: String, gender: String)
+    fun hideBackBtn()
+    fun hideNextBtn()
+    fun showNextBtn()
+    fun showBackBtn()
+    fun moveNext()
     fun moveBack()
+    fun changeBtnText()
+    fun restoreBtnText()
 }

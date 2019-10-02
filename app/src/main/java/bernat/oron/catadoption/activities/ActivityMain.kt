@@ -91,6 +91,7 @@ class ActivityMain : AppCompatActivity(), View.OnClickListener, RegistrationInte
                 }
             }
             R.id.btn_nav_favorite ->{
+
                 if (isUserLogin()) {
                     startActivity(Intent(applicationContext, ActivityFavorite::class.java))
                 }else{

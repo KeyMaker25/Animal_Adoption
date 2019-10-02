@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
+        android:windowSoftInputMode="adjustResize"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/main2"
+        android:layoutDirection="rtl"
+        android:orientation="vertical"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_blue"
-        android:layoutDirection="rtl"
+        android:layout_gravity="center"
         >
 
-    <LinearLayout
+    <TableLayout
             android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
         <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="12sp"
                 android:gravity="center"
-                android:lineSpacingExtra="12sp"
+                android:lines="4"
+                android:lineSpacingExtra="8sp"
                 android:text="@string/time_to_upload_photos"
                 android:textDirection="rtl"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                />
 
         <TextView
                 android:text="@string/title_upload_image_view"
@@ -35,12 +38,10 @@
                 android:textSize="16sp"
                 android:padding="6dp"
                 />
-
-        <LinearLayout
-                android:layout_margin="12sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+        <TableRow
+                android:gravity="center"
+                android:padding="12sp"
+                >
             <ImageView
                 android:id="@+id/fragment_upload_edit_image1"
 
@@ -83,36 +84,9 @@
                     android:layout_weight="1"
                     />
 
+        </TableRow>
+
+    </TableLayout>
 
 
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <TextView
-            android:id="@+id/btn_back"
-
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"
-            android:textColor="#fff"
-            android:layout_gravity="bottom|start"
-            android:layout_margin="26dp"
-            />
-
-    <TextView
-            android:id="@+id/btn_next"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="הבא..."
-            android:textColor="#fff"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="26dp"
-            android:textSize="16sp"
-            />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>

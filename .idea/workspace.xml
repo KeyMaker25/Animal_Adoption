@@ -81,14 +81,7 @@
     <last-search-timestamp>1566221154805</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4e9fee-59e1-4260-aebd-f20f0c1fc677" name="Default Changelist" comment="3 commit. image click added 17/09/19">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentScreenSlidePageFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload3.xml" afterDir="false" />
+    <list default="true" id="4d4e9fee-59e1-4260-aebd-f20f0c1fc677" name="Default Changelist" comment="2/10/19 - animal registration pager">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -99,20 +92,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityAnimalPage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityAnimalPage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityContactUs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityContactUs.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivitySplash.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivitySplash.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite_blank.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite_blank.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,64 +136,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentScreenSlidePageFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+            <state relative-caret-position="-78">
+              <caret line="18" column="55" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="55" />
               <folding>
-                <element signature="e#43#568#0" expanded="true" />
-                <element signature="e#1827#3133#0" />
-                <element signature="e#3817#3865#0" />
+                <element signature="e#43#777#0" expanded="true" />
+                <element signature="e#1312#5089#0" />
+                <element signature="e#2372#3677#0" />
+                <element signature="e#8489#8992#0" />
+                <element signature="e#7955#8676#0" />
+                <element signature="e#9201#10064#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityAnimalPage.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="35" column="56" lean-forward="true" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+            <state relative-caret-position="113">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#1966#3281#0" />
-                <element signature="e#3313#3689#0" />
-                <element signature="e#3720#4416#0" />
-                <element signature="e#4477#5388#0" />
-                <element signature="e#5425#7210#0" />
-                <element signature="e#7235#8176#0" />
-                <element signature="e#8203#9047#0" />
-                <element signature="e#9082#9235#0" />
-                <element signature="e#9334#9750#0" />
+                <element signature="e#44#807#0" expanded="true" />
+                <element signature="e#933#1746#0" />
+                <element signature="e#1777#2159#0" />
+                <element signature="e#2194#2362#0" />
+                <element signature="e#2395#2446#0" />
+                <element signature="e#2479#2530#0" />
+                <element signature="e#2563#2612#0" />
+                <element signature="e#2645#2694#0" />
+                <element signature="e#3162#3277#0" />
+                <element signature="e#2729#2769#0" />
+                <element signature="e#2799#2907#0" />
+                <element signature="e#2936#3074#0" />
+                <element signature="e#3299#3368#0" />
+                <element signature="e#4507#5188#0" />
+                <element signature="e#3177#3436#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_animal_page.xml">
-          <provider editor-type-id="android-designer2" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-              <folding>
-                <element signature="e#42#109#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="396">
+              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -217,13 +189,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload3.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-              <folding>
-                <element signature="e#845#876#0" expanded="true" />
-                <element signature="e#3061#3087#0" expanded="true" />
-                <element signature="e#3524#3538#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -243,12 +210,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>תודה</find>
-      <find>dialo</find>
-      <find>מיקום</find>
-      <find>צרו קשר</find>
-      <find>animalCollection</find>
-      <find>TextInputEditText</find>
       <find>hidd</find>
       <find>input_name_con</find>
       <find>filter btn-count</find>
@@ -273,6 +234,12 @@
       <find>לחץ</find>
       <find>גזע</find>
       <find>משקל</find>
+      <find>user</find>
+      <find>login</find>
+      <find>format</find>
+      <find>ScrollView</find>
+      <find>locations</find>
+      <find>changeFragUploadView</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -282,9 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/btn_round_corners_blue.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/fragment_upload_background.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/image_btn_green_border.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycler_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_card_horizontal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/drawables.xml" />
@@ -299,7 +263,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/fragment_filter_background.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterHAnimal.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterVAnimal.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_animal_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentRegistration.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_animal_page_sliding_images.xml" />
@@ -308,37 +271,42 @@
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFullScreen.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterSlideImage.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_card_v_2.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite_blank.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityContactUs.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterSlidingFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityAnimalPage.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/TransformPager.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentSlidingUpload.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_favorite.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/CustomViewPager.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/CustomViewPager.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/image_btn_pink_border.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivitySplash.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload3.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/AnimalCreator.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentScreenSlidePageFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="-1920" />
     <option name="width" value="1920" />
-    <option name="height" value="1200" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -346,6 +314,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -400,8 +370,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -426,13 +394,6 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="catadoption" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cat adoption" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="catadoption" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cat adoption" type="1abcf292:AndroidViewProjectNode" />
@@ -466,8 +427,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="02b72a3ae077209f" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-17T13:47:24.263Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5_API_28_hebrew" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-25T09:43:09.026Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_API_25" />
@@ -477,7 +438,7 @@
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1566294555874" />
   </component>
@@ -613,15 +574,22 @@
       <option name="project" value="LOCAL" />
       <updated>1568710906084</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3 commit. upload screen improvement  added 19/09/19">
+      <created>1568875879711</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568875879711</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="6" />
+    <frame x="-1920" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17252396" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2087327" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -629,17 +597,17 @@
       <window_info id="Resources Explorer" order="6" weight="0.32960597" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.727902" weight="0.4637168" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.7140575" weight="0.20594059" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.7119276" weight="0.46534654" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49946752" weight="0.4049505" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.81386137" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.27209798" side_tool="true" visible="true" weight="0.057522126" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49893504" weight="0.35742575" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49946752" weight="0.3990099" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="6" sideWeight="0.5005325" side_tool="true" visible="true" weight="0.3990099" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32970297" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.6309904" weight="0.21150443" />
-      <window_info anchor="bottom" id="Find" order="10" sideWeight="0.49840257" weight="0.13451327" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49893504" weight="0.32920355" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.629393" weight="0.27821782" />
+      <window_info anchor="bottom" id="Find" order="10" sideWeight="0.4978701" weight="0.2029703" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.37524754" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -651,37 +619,6 @@
       <window_info anchor="right" id="Preview" order="7" weight="0.32960597" />
       <window_info anchor="right" id="Assistant" order="8" weight="0.32960597" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15654951" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49946752" visible="true" weight="0.26336634" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.32970297" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5005325" side_tool="true" weight="0.25544554" />
-      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49893504" weight="0.2920792" />
-      <window_info anchor="bottom" id="Find" order="10" weight="0.32970297" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32970297" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32960597" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Flutter Inspector" order="4" />
-      <window_info anchor="right" id="Flutter Outline" order="5" weight="0.32960597" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Preview" order="7" weight="0.32960597" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -731,104 +668,11 @@
     <MESSAGE value="finish all app logic 24-08-19" />
     <MESSAGE value="firebase fix 12/09/19" />
     <MESSAGE value="3 commit. image click added 17/09/19" />
-    <option name="LAST_COMMIT_MESSAGE" value="3 commit. image click added 17/09/19" />
+    <MESSAGE value="3 commit. upload screen improvement  added 19/09/19" />
+    <MESSAGE value="2/10/19 - animal registration pager" />
+    <option name="LAST_COMMIT_MESSAGE" value="2/10/19 - animal registration pager" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_like_star_empty.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="125" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="10" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arrow_right_upload.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk">
-      <provider selected="true" editor-type-id="apk-viewer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentFilter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="29" column="50" lean-forward="true" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragmet_filter.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="74" column="25" lean-forward="true" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_signup.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/fragment_filter_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.41/8f361846168f853fb213b0ab02d193f02644548/kotlin-stdlib-common-1.3.41-sources.jar!/generated/_Collections.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="530" selection-start-line="530" selection-end-line="530" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_view_card_horizontal.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterHAnimal.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.0.0/bcd167792ec03e930d5c8345c99ae07b2627de84/fragment-1.0.0-sources.jar!/androidx/fragment/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="681" column="19" selection-start-line="681" selection-start-column="19" selection-end-line="681" selection-end-column="19" />
-          <folding>
-            <element signature="e#26152#26153#0" expanded="true" />
-            <element signature="e#26216#26217#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentRegistration.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -914,22 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="261" column="9" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
-          <folding>
-            <element signature="e#2104#2404#0" />
-            <element signature="e#2433#2568#0" />
-            <element signature="e#2603#2990#0" />
-            <element signature="e#3027#5053#0" />
-            <element signature="e#5248#8514#0" />
-            <element signature="e#8547#8945#0" />
-            <element signature="e#8979#11234#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -959,20 +787,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="84" column="41" lean-forward="true" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterSlidingFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterSlidingFragment.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_favorite_blank.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -992,117 +807,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1430">
-          <caret line="65" column="59" selection-start-line="65" selection-start-column="59" selection-end-line="65" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/ViewPager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="390" column="17" selection-start-line="390" selection-start-column="17" selection-end-line="390" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/CustomViewPager.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#42#247#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="172" column="8" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="88" lean-forward="true" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload2.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivitySplash.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload3.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="e#845#876#0" expanded="true" />
-            <element signature="e#3061#3087#0" expanded="true" />
-            <element signature="e#3524#3538#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#44#754#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="120" column="41" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="40" lean-forward="true" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding>
-            <element signature="e#42#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/CustomViewPager.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_animal_page_sliding_images.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -1118,14 +823,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentScreenSlidePageFragment.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityMain.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="336">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
           <folding>
-            <element signature="e#43#568#0" expanded="true" />
-            <element signature="e#1827#3133#0" />
-            <element signature="e#3817#3865#0" />
+            <element signature="e#2104#2404#0" />
+            <element signature="e#2433#2568#0" />
+            <element signature="e#2603#2990#0" />
+            <element signature="e#5248#8514#0" />
+            <element signature="e#8547#8945#0" />
+            <element signature="e#8979#11234#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/AdapterVPager.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/adapters/ZoomOutPageTransformer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="e#42#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/CustomViewPager.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#39#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1133,32 +868,272 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_animal_page.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+        <state relative-caret-position="298">
+          <caret line="187" column="32" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Animals.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="132">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="18" selection-end-column="48" />
+          <folding>
+            <element signature="e#948#1228#0" />
+            <element signature="e#1374#1654#0" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="172" column="8" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/image_btn_pink_border.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.0.0/bcd167792ec03e930d5c8345c99ae07b2627de84/fragment-1.0.0-sources.jar!/androidx/fragment/app/FragmentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="2250" selection-start-line="2250" selection-end-line="2250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.0.0/bcd167792ec03e930d5c8345c99ae07b2627de84/fragment-1.0.0-sources.jar!/androidx/fragment/app/BackStackRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="654" selection-start-line="654" selection-end-line="654" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.fragment/fragment/1.0.0/bcd167792ec03e930d5c8345c99ae07b2627de84/fragment-1.0.0-sources.jar!/androidx/fragment/app/FragmentStatePagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/ViewPager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="1637" selection-start-line="1637" selection-end-line="1637" />
+          <folding>
+            <element signature="e#41427#41428#0" expanded="true" />
+            <element signature="e#41461#41462#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/com/android/internal/util/ArrayUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/util/LongSparseLongArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="7250" selection-start-line="7250" selection-end-line="7250" />
+          <folding>
+            <element signature="e#157113#157114#0" expanded="true" />
+            <element signature="e#157177#157178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="17938" selection-start-line="17938" selection-end-line="17938" />
+          <folding>
+            <element signature="e#409021#409022#0" expanded="true" />
+            <element signature="e#409074#409075#0" expanded="true" />
+            <element signature="e#591299#591300#0" expanded="true" />
+            <element signature="e#591357#591358#0" expanded="true" />
+            <element signature="e#724354#724355#0" expanded="true" />
+            <element signature="e#899223#899224#0" expanded="true" />
+            <element signature="e#899284#899285#0" expanded="true" />
+            <element signature="e#1037353#1037354#0" expanded="true" />
+            <element signature="e#1037410#1037411#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="6" column="78" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityAnimalPage.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="56" lean-forward="true" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+        <state relative-caret-position="692">
+          <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
           <folding>
             <element signature="e#1966#3281#0" />
             <element signature="e#3313#3689#0" />
-            <element signature="e#3720#4416#0" />
             <element signature="e#4477#5388#0" />
             <element signature="e#5425#7210#0" />
             <element signature="e#7235#8176#0" />
             <element signature="e#8203#9047#0" />
             <element signature="e#9082#9235#0" />
             <element signature="e#9334#9750#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload_animal.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload2.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/AnimalCreator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#39#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload1.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivitySplash.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="40" column="16" lean-forward="true" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <element signature="e#44#682#0" expanded="true" />
+            <element signature="e#787#997#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentUpload.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#44#754#0" expanded="true" />
+            <element signature="e#1969#3459#2" />
+            <element signature="e#7151#10163#0" />
+            <element signature="e#9760#10136#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_upload3.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityFavorite.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+          <folding>
+            <element signature="e#2344#3115#0" />
+            <element signature="e#3155#4435#0" />
+            <element signature="e#4866#5724#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/model/Interfaces.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/fragments/FragmentScreenSlidePageFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="18" column="55" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="55" />
+          <folding>
+            <element signature="e#43#777#0" expanded="true" />
+            <element signature="e#1312#5089#0" />
+            <element signature="e#2372#3677#0" />
+            <element signature="e#8489#8992#0" />
+            <element signature="e#7955#8676#0" />
+            <element signature="e#9201#10064#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/bernat/oron/catadoption/activities/ActivityUploadAnimal.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#44#807#0" expanded="true" />
+            <element signature="e#933#1746#0" />
+            <element signature="e#1777#2159#0" />
+            <element signature="e#2194#2362#0" />
+            <element signature="e#2395#2446#0" />
+            <element signature="e#2479#2530#0" />
+            <element signature="e#2563#2612#0" />
+            <element signature="e#2645#2694#0" />
+            <element signature="e#3162#3277#0" />
+            <element signature="e#2729#2769#0" />
+            <element signature="e#2799#2907#0" />
+            <element signature="e#2936#3074#0" />
+            <element signature="e#3299#3368#0" />
+            <element signature="e#4507#5188#0" />
+            <element signature="e#3177#3436#0" />
           </folding>
         </state>
       </provider>

@@ -14,11 +14,13 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import android.content.Context
+import android.net.ConnectivityManager
+
 
 class ActivitySplash :AppCompatActivity(){
 
     companion object{
-
         fun isUserLogin() : Boolean {
             if (FirebaseAuth.getInstance().currentUser != null){
                 uid = FirebaseAuth.getInstance().currentUser!!.uid
@@ -27,9 +29,9 @@ class ActivitySplash :AppCompatActivity(){
             return false
         }
 
-        var allTypes = arrayListOf("")
-        var dogType= arrayListOf("type")
-        var catType= arrayListOf("type")
+        var allTypes= arrayListOf("")
+        var dogType= arrayListOf("")
+        var catType= arrayListOf("")
         var animalCollection = ArrayList<Animal>()
         var dogsCollection = ArrayList<Animal>()
         var catsCollection = ArrayList<Animal>()
@@ -46,8 +48,20 @@ class ActivitySplash :AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         textV = findViewById(R.id.textView2)
-        initTypes()
-        init()
+        if (isOnline())
+        {
+            initTypes()
+            init()
+        }
+        else {
+            connectionFailed("אין חיבור לאינטרנט")
+        }
+
+    }
+
+    private fun isOnline(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return cm.activeNetworkInfo != null && cm.activeNetworkInfo.isConnected
     }
 
     private fun initTypes() {
@@ -65,8 +79,8 @@ class ActivitySplash :AppCompatActivity(){
                 Log.e("Db error", p0.message)
                 connectionFailed(p0.message)
             }
-
         })
+
     }
 
     private fun init(){
@@ -111,6 +125,7 @@ class ActivitySplash :AppCompatActivity(){
                 }
                 startActivity(Intent(applicationContext,ActivityMain::class.java))
             }
+
             override fun onCancelled(p0: DatabaseError) {
                 Log.e("SingleValueEvent E", p0.message)
                 connectionFailed(p0.message)

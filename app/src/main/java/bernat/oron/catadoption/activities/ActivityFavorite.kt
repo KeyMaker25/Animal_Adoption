@@ -21,10 +21,7 @@ import bernat.oron.catadoption.R
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.uploadAnimalCollectionID
-import bernat.oron.catadoption.fragments.FragmentUpload
-import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_1
-import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_2
-import bernat.oron.catadoption.fragments.FragmentUpload.Companion.PICK_IMAGE_REQUEST_3
+import bernat.oron.catadoption.model.Animal
 import bernat.oron.catadoption.model.UploadNewAnimalInterface
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.FirebaseDatabase
@@ -39,7 +36,6 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
     lateinit var btnFloating: FloatingActionButton
     lateinit var recFavorite: RecyclerView
     lateinit var recMyAnimal: RecyclerView
-    lateinit var fragUpload: FragmentUpload
     lateinit var titleMyFavorite: TextView
     lateinit var titleMyUploads: TextView
     lateinit var frameLayout: FrameLayout
@@ -157,7 +153,7 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
                 try {
                     //got image as bitmap (can upload now)
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
-                    changeFragUploadView(bitmap, requestCode)
+                    //changeFragUploadView(bitmap, requestCode)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -169,28 +165,8 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
         }
     }
 
-    private fun changeFragUploadView(image: Bitmap, resCode: Int){
-        if (!arrayOfImages.contains(image)){
-            arrayOfImages.add(image)
-        }
-        Log.i("add","images to array count = ${arrayOfImages.count()}")
-        when(resCode){
-            PICK_IMAGE_REQUEST_1 ->{
-                fragUpload.image1.setImageBitmap(image)
-                fragUpload.image1.background = null
-            }
-            PICK_IMAGE_REQUEST_2 ->{
-                fragUpload.image2.setImageBitmap(image)
-                fragUpload.image2.background = null
-            }
-            PICK_IMAGE_REQUEST_3 ->{
-                fragUpload.image3.setImageBitmap(image)
-                fragUpload.image3.background = null
-            }
-        }
-    }
 
-    private fun uploadImageToFireBase(animal: bernat.oron.catadoption.model.Animal) {
+    private fun uploadImageToFireBase(animal: Animal) {
         var count = 0
         animal.image = mutableListOf()
 
@@ -225,10 +201,10 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
 
     }
 
-    private fun uploadAnimal(animal: bernat.oron.catadoption.model.Animal){
+    private fun uploadAnimal(animal: Animal){
         print("animal.image = ${animal.image}")
         //upload the new animal to the tst BD for pre upload verification
-        val map1 = mutableMapOf<String, bernat.oron.catadoption.model.Animal>()
+        val map1 = mutableMapOf<String, Animal>()
         map1[uniqueID] = animal
 
         //send to tst DB - for verification (Spam)
@@ -265,13 +241,12 @@ class ActivityFavorite: AppCompatActivity() , UploadNewAnimalInterface {
         titleMyFavorite.text = "מועדפים"
     }
 
-    override fun newAnimal(animal: bernat.oron.catadoption.model.Animal) {
-        supportFragmentManager.beginTransaction().hide(fragUpload).commit()
+    override fun newAnimal(animal: Animal) {
+//        supportFragmentManager.beginTransaction().hide(fragUpload).commit()
         progressDialog?.show()
 
         //here we upload and he animal get the path to animal.images
         uploadImageToFireBase(animal)
-
     }
 
 }

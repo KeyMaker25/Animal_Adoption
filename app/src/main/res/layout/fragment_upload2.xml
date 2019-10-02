@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:windowSoftInputMode="adjustResize"
+        android:orientation="vertical"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main2"
         android:layoutDirection="rtl"
         >
-    <LinearLayout
+
+    <TableLayout
+            android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="@color/main2"
+            android:layout_height="wrap_content"
             >
-
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                android:id="@+id/auto_complete_location"
-                android:textAlignment="center"
-                android:hint="@string/location"
-                android:layout_width="180sp"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                />
-
-        <LinearLayout
-                android:layout_margin="12sp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <TableRow
                 android:gravity="center"
                 >
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/auto_complete_location"
 
-            <Spinner
-                    android:id="@+id/fragment_animal_picker_weight"
-
-                    android:textDirection="anyRtl"
-                    android:layout_width="85dp"
+                    android:textAlignment="center"
+                    android:hint="@string/location"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     />
+        </TableRow>
 
+        <TableRow
+                android:gravity="center"
+                >
 
             <TextView
                     android:textSize="16sp"
@@ -49,58 +44,50 @@
                     android:padding="2sp"
                     />
 
-        </LinearLayout>
+            <Spinner
+                    android:id="@+id/fragment_animal_picker_weight"
 
-        <EditText
-                android:id="@+id/fragment_upload_edit_phone"
+                    android:textDirection="anyRtl"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    />
 
-                android:inputType="phone"
-                android:hint="@string/number_for_call"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                />
+        </TableRow>
 
-        <EditText
-                android:id="@+id/fragment_upload_edit_story"
+        <TableRow
+                android:gravity="center"
+                >
+            <EditText
+                    android:id="@+id/fragment_upload_edit_phone"
 
-                android:lines="4"
-                android:hint="@string/animal_story"
-                android:inputType="textMultiLine"
-                android:layout_marginTop="12dp"
-                android:minLines="2"
-                android:maxLines="6"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:scrollbars="vertical"
-                />
+                    android:textAlignment="center"
+                    android:inputType="phone"
+                    android:hint="@string/number_for_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    />
+        </TableRow>
+        <TableRow
+                android:gravity="center"
+                >
+            <EditText
+                    android:id="@+id/fragment_upload_edit_story"
 
-    </LinearLayout>
+                    android:textAlignment="center"
+                    android:lines="4"
+                    android:hint="@string/animal_story"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="12dp"
+                    android:minLines="2"
+                    android:maxLines="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:scrollbars="vertical"
+                    android:maxWidth="220dp"
+                    />
+        </TableRow>
+    </TableLayout>
 
-    <TextView
-            android:id="@+id/btn_next"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="הבא..."
-            android:textColor="#fff"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="26dp"
-            android:textSize="16sp"
-            />
-
-    <TextView
-            android:id="@+id/btn_back"
-
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"
-            android:textColor="#fff"
-            android:layout_gravity="bottom|start"
-            android:layout_margin="26dp"
-            />
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+</ScrollView>

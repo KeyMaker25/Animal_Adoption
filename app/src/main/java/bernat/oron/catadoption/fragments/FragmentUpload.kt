@@ -33,18 +33,10 @@ class FragmentUpload(position: Int?) : Fragment() {
     lateinit var phoneNumberEditText: EditText
     lateinit var autoCompleteLocation: AppCompatAutoCompleteTextView
     lateinit var storyEditText: EditText
-    lateinit var image1: ImageView
-    lateinit var image2: ImageView
-    lateinit var image3: ImageView
+
     lateinit var btnDone: Button
 
 
-
-    companion object{
-        const val PICK_IMAGE_REQUEST_1 = 71
-        const val PICK_IMAGE_REQUEST_2 = 72
-        const val PICK_IMAGE_REQUEST_3 = 73
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) :
         View? = inflater.inflate(R.layout.fragment_upload, container, false)
@@ -97,7 +89,7 @@ class FragmentUpload(position: Int?) : Fragment() {
         phoneNumberEditText = view.findViewById(R.id.fragment_upload_edit_phone)
         storyEditText = view.findViewById(R.id.fragment_upload_edit_story)
 
-        initImages()
+
 
     }
 
@@ -143,41 +135,7 @@ class FragmentUpload(position: Int?) : Fragment() {
 
     }
 
-    private fun getIntImage(id: Int): Int{
-        when(id){
-            R.id.fragment_upload_edit_image1 ->{
-                Log.i("image upload", "image1")
-                return PICK_IMAGE_REQUEST_1
-            }
-            R.id.fragment_upload_edit_image2 ->{
-                Log.i("image upload", "image2")
-                return PICK_IMAGE_REQUEST_2
-            }
-            R.id.fragment_upload_edit_image3 ->{
-                Log.i("image upload", "image3")
-                return PICK_IMAGE_REQUEST_3
-            }
-        }
-        return 1
-    }
 
-    private fun initImages(){
-        image1 = view!!.findViewById(R.id.fragment_upload_edit_image1)
-        image2 = view!!.findViewById(R.id.fragment_upload_edit_image2)
-        image3 = view!!.findViewById(R.id.fragment_upload_edit_image3)
-        val imageListener = View.OnClickListener {
-                v->
-            val intent = Intent()
-            val req = getIntImage(v.id)
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_GET_CONTENT
-            activity?.startActivityForResult(Intent.createChooser(intent, "Select Picture"),req)
-        }
-
-        image1.setOnClickListener(imageListener)
-        image2.setOnClickListener(imageListener)
-        image3.setOnClickListener(imageListener)
-    }
     // validate inputs
     private fun validate(): Animal?{
         //check name

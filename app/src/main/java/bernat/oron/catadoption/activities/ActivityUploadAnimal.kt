@@ -1,73 +1,1 @@
-package bernat.oron.catadoption.activities
-
-import android.os.Bundle
-import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.ViewPager
-import bernat.oron.catadoption.R
-import bernat.oron.catadoption.adapters.ZoomOutPageTransformer
-import bernat.oron.catadoption.fragments.ScreenSlidePageFragment
-import bernat.oron.catadoption.model.PagerMoveInterface
-
-private const val NUM_PAGES = 3
-
-class ActivityUploadAnimal : FragmentActivity() , PagerMoveInterface {
-
-
-    private lateinit var mPager: ViewPager
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_upload_animal)
-
-        // Instantiate a ViewPager and a PagerAdapter.
-        mPager = findViewById(R.id.upload_pager)
-        // The pager adapter, which provides the pages to the view pager widget.
-        val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)
-
-        mPager.adapter = pagerAdapter
-        mPager.setOnTouchListener {
-                v, event -> true
-        }
-        mPager.setPageTransformer(true, ZoomOutPageTransformer())
-    }
-
-    override fun onBackPressed() {
-        if (mPager.currentItem == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed()
-        } else {
-            // Otherwise, select the previous step.
-            mPager.currentItem = mPager.currentItem - 1
-        }
-    }
-
-    override fun moveNext(name: String, age: String, type: String, breed: String, gender: String) {
-        mPager.currentItem += 1
-    }
-
-    override fun moveBack(){
-        print("move back")
-        mPager.currentItem -= 1
-    }
-
-
-
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-
-        override fun getCount(): Int = NUM_PAGES
-
-        override fun getItem(position: Int): Fragment{
-            val frag = ScreenSlidePageFragment(position)
-            frag.listener = this@ActivityUploadAnimal
-            return frag
-        }
-
-
-    }
-
-}
+package bernat.oron.catadoption.activitiesimport android.app.Activityimport android.content.Intentimport android.graphics.Bitmapimport android.net.Uriimport android.os.Bundleimport android.provider.MediaStoreimport android.util.Logimport android.view.Viewimport android.widget.Buttonimport androidx.fragment.app.Fragmentimport androidx.fragment.app.FragmentActivityimport androidx.fragment.app.FragmentManagerimport androidx.fragment.app.FragmentStatePagerAdapterimport bernat.oron.catadoption.Rimport bernat.oron.catadoption.adapters.ZoomOutPageTransformerimport bernat.oron.catadoption.fragments.ScreenSlidePageFragmentimport bernat.oron.catadoption.model.CustomViewPagerimport bernat.oron.catadoption.model.PagerMoveInterfaceimport java.io.IOExceptionprivate const val NUM_PAGES = 3const val PICK_IMAGE_REQUEST_1 = 71const val PICK_IMAGE_REQUEST_2 = 72const val PICK_IMAGE_REQUEST_3 = 73class ActivityUploadAnimal : FragmentActivity() , PagerMoveInterface {    private lateinit var mPager: CustomViewPager    private lateinit var indicator: com.viewpagerindicator.CirclePageIndicator    private var filePath: Uri? = null    lateinit var btnNext: Button    lateinit var btnBack: Button    private var arrayOfImages = arrayListOf<Bitmap>()    override fun onCreate(savedInstanceState: Bundle?) {        super.onCreate(savedInstanceState)        setContentView(R.layout.activity_upload_animal)        setButtons()        //pager        mPager = findViewById(R.id.upload_pager)        // The pager adapter, which provides the pages to the view pager widget.        val pagerAdapter = ScreenSlidePagerAdapter(supportFragmentManager)        mPager.adapter = pagerAdapter        mPager.setPagingEnabled(false)        mPager.setPageTransformer(true, ZoomOutPageTransformer())        //pager indicator        indicator = findViewById(R.id.upload_animal_indicator)        indicator.setViewPager(mPager)        indicator.isCentered = true        //Set circle indicator radius        indicator.radius = 6 * resources.displayMetrics.density        indicator.setOnTouchListener{ _, _ -> true }    }    private fun setButtons() {        btnBack = findViewById(R.id.btn_back)        btnNext = findViewById(R.id.btn_next)        btnNext.setOnClickListener {            if (btnNext.visibility == View.VISIBLE){                moveNext()            }        }        btnBack.setOnClickListener {            if (btnBack.visibility == View.VISIBLE){                moveBack()            }        }    }    override fun onBackPressed() {        if (mPager.currentItem == 0) {            super.onBackPressed()        } else {            mPager.setCurrentItem(mPager.currentItem-1,true)        }    }    override fun hideNextBtn() {        btnNext.visibility = View.INVISIBLE    }    override fun hideBackBtn() {        btnBack.visibility = View.INVISIBLE    }    override fun showNextBtn() {        btnNext.visibility = View.VISIBLE    }    override fun showBackBtn() {        btnBack.visibility = View.VISIBLE    }    override fun restoreBtnText() {        btnNext.text = "המשך "    }    override fun changeBtnText() {        btnNext.text = " העלה !"    }    override fun moveNext() {        mPager.setCurrentItem(mPager.currentItem+1,true)        showBackBtn()        hideNextBtn()    }    override fun moveBack(){        mPager.setCurrentItem(mPager.currentItem-1,true)        if (mPager.currentItem == 0){            hideBackBtn()        }    }    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {        super.onActivityResult(requestCode, resultCode, data)        Log.i("favorite on result","$requestCode got image from user ${data?.data}")        if (requestCode == PICK_IMAGE_REQUEST_1 || requestCode == PICK_IMAGE_REQUEST_2 || requestCode == PICK_IMAGE_REQUEST_3) {            if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {                filePath = data.data                try {                    //got image as bitmap (can upload now)                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)                    changeFragUploadView(bitmap, requestCode)                } catch (e: IOException) {                    e.printStackTrace()                }            } else {                println("result ok? ${Activity.RESULT_OK == requestCode}")                println("$requestCode NOT PICK_IMAGE_REQUEST")            }        }    }    private fun changeFragUploadView(image: Bitmap, resCode: Int){        if (!arrayOfImages.contains(image)){            arrayOfImages.add(image)        }        Log.i("add","images to array count = ${arrayOfImages.count()}")        when(resCode){            PICK_IMAGE_REQUEST_1 ->{                (mPager.currentItem as ScreenSlidePageFragment)                    .image1?.setImageBitmap(image)                (mPager.currentItem as ScreenSlidePageFragment)                    .image1?.background = null            }            PICK_IMAGE_REQUEST_2 ->{//                fragUpload.image2.setImageBitmap(image)//                fragUpload.image2.background = null            }            PICK_IMAGE_REQUEST_3 ->{//                fragUpload.image3.setImageBitmap(image)//                fragUpload.image3.background = null            }        }    }    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {        override fun getCount(): Int = NUM_PAGES        override fun getItem(position: Int): Fragment{            val frag = ScreenSlidePageFragment(position)            frag.listener = this@ActivityUploadAnimal            return frag        }    }}
