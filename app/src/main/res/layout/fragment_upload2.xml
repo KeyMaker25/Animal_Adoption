@@ -23,6 +23,11 @@
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/auto_complete_location"
 
+                    android:textSize="26sp"
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
+
                     android:textAlignment="center"
                     android:hint="@string/location"
                     android:layout_width="wrap_content"
@@ -36,7 +41,8 @@
                 >
 
             <TextView
-                    android:textSize="16sp"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:textSize="22sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/weight_in_kilo"
@@ -46,11 +52,14 @@
 
             <Spinner
                     android:id="@+id/fragment_animal_picker_weight"
-
+                    android:backgroundTint="@color/mainTextLightWhite"
                     android:textDirection="anyRtl"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+
+                    android:popupBackground="@color/main2"
+
                     />
 
         </TableRow>
@@ -61,12 +70,18 @@
             <EditText
                     android:id="@+id/fragment_upload_edit_phone"
 
+                    android:textSize="26sp"
                     android:textAlignment="center"
                     android:inputType="phone"
                     android:hint="@string/number_for_call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
+
                     />
         </TableRow>
         <TableRow
@@ -86,6 +101,11 @@
                     android:layout_width="wrap_content"
                     android:scrollbars="vertical"
                     android:maxWidth="220dp"
+
+                    android:textSize="26sp"
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
                     />
         </TableRow>
     </TableLayout>

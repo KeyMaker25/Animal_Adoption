@@ -68,7 +68,7 @@
                 android:focusable="true"
                 android:text="@string/cats"
                 android:textAllCaps="false"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/mainTextLightWhite" />
 
         <TextView
                 android:id="@+id/txtUsername"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/colorText"
+                android:textColor="@color/mainTextLightWhite"
                 android:textSize="17sp" />
 
         <TextView
@@ -91,7 +91,7 @@
                 android:focusable="true"
                 android:text="@string/dogs"
                 android:textAllCaps="false"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/mainTextLightWhite" />
 
     </androidx.appcompat.widget.Toolbar>
 

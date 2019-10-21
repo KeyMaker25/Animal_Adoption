@@ -22,6 +22,14 @@ open class Animal constructor(val ID: String,
     override fun toString(): String {
         return "Hey my name is $name and I'm a $breed $type I would love for you to adopt me :)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        return this.ID == (other as Animal).ID
+    }
+
+    override fun hashCode(): Int {
+        return super.hashCode()
+    }
 }
 
 class Cat(ID: String,
@@ -35,7 +43,7 @@ class Cat(ID: String,
           ownerID: String,
           phone: String,
           image: MutableList<String>?) :
-    Animal(ID,name,"Cat",age,breed,story,location,gender,weight, SimpleDateFormat("dd-MM-yyyy").format(Date()), ownerID,phone,image)
+    Animal(ID,name,"Cat",age,breed,story,location,gender,weight, SimpleDateFormat("dd-MM-yyyy",Locale.getDefault()).format(Date()), ownerID,phone,image)
 
 class Dog(ID: String,
           name: String,
@@ -48,7 +56,7 @@ class Dog(ID: String,
           ownerID: String,
           phone: String,
           image: MutableList<String>?) :
-    Animal(ID,name,"Dog",age,breed,story,location,gender,weight,SimpleDateFormat("dd-MM-yyyy").format(Date()), ownerID,phone,image)
+    Animal(ID,name,"Dog",age,breed,story,location,gender,weight,SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date()), ownerID,phone,image)
 
 
 

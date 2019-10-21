@@ -65,7 +65,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:textSize="28sp" />
+                        android:textSize="28sp"
+                        android:textColor="@color/mainTextLightWhite"
+                        />
 
                 <Button
                         android:id="@+id/animal_page_btn_share"
@@ -183,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:background="@color/main2"
+                    android:textColor="@color/mainTextLightWhite"
             />
             <TextView
                     android:id="@+id/animal_txt_page_story"
@@ -206,6 +209,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/main2"
+                    android:textColor="@color/mainTextLightWhite"
 
             />
             <LinearLayout
@@ -270,6 +274,7 @@
                     android:textSize="22sp"
                     android:layout_gravity="center"
                     android:text="@string/call_owner"
+                    android:textColor="@color/mainTextLightWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -283,12 +288,28 @@
                     android:textSize="17sp"
                     android:gravity="center"
                     android:text="@string/menu_contact_us"
+                    android:textColor="@color/mainTextLightWhite"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginBottom="12sp"
             />
+
+            <Button
+                    android:id="@+id/animal_page_btn_remove"
+
+                    android:background="@drawable/btn_round_corners_red_del"
+                    android:textSize="17sp"
+                    android:gravity="center"
+                    android:text="@string/delete_animal"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12sp"
+
+                    android:visibility="gone"
+                    />
 
         </LinearLayout>
 

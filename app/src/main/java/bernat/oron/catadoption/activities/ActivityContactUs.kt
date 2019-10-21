@@ -16,7 +16,6 @@ import java.util.*
 
 class ActivityContactUs : AppCompatActivity(){
 
-
     var from = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

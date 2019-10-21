@@ -30,6 +30,7 @@
                 <Button
                         android:id="@+id/btn_nav_filter"
                         android:text="@string/filter"
+                        android:textColor="@color/mainTextLightWhite"
                         android:layout_margin="12dp"
                         android:background="@drawable/btn_round_corners_purple"
                         android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                 <Button
                         android:id="@+id/btn_nav_favorite"
                         android:text="@string/txt_favorite"
+                        android:textColor="@color/mainTextLightWhite"
                         android:layout_margin="12dp"
                         android:background="@drawable/btn_round_corners_purple"
                         android:layout_width="match_parent"

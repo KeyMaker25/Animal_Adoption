@@ -9,9 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import bernat.oron.catadoption.R
-import bernat.oron.catadoption.activities.ActivitySplash
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.animalCollection
-import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uploadAnimalCollection
 import bernat.oron.catadoption.model.Animal
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
@@ -26,7 +25,8 @@ class AdapterHAnimal(val items: ArrayList<String>, val context: Context) : Recyc
     }
 
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val item = animalCollection.firstOrNull{ it.ID == items[p1]}
+        var item = animalCollection.firstOrNull{ it.ID == items[p1]}
+        if (item == null) item = uploadAnimalCollection.firstOrNull { it.ID == items[p1]}
         val images = item?.image
         val storageReference = FirebaseStorage.getInstance()
         if (images != null) {
@@ -61,7 +61,11 @@ class AdapterHAnimal(val items: ArrayList<String>, val context: Context) : Recyc
 
         init {
             itemView.setOnClickListener {
-                onItemClick?.invoke(animalCollection.firstOrNull{ it.ID == items[adapterPosition]}!!)
+                var item = animalCollection.firstOrNull{ it.ID == items[adapterPosition]}
+                if (item == null){
+                    item = uploadAnimalCollection.firstOrNull { it.ID == items[adapterPosition]}
+                }
+                onItemClick?.invoke(item!!)
             }
         }
 

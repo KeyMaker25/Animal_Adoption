@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/card_view"
-        android:layout_width="200sp"
-        android:layout_height="200sp"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
         app:cardCornerRadius="5dp"
         android:layout_margin="5dp"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp"
+            android:padding="6dp"
     >
 
         <ImageView
@@ -21,13 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
+                android:contentDescription="@string/increase_image"
         />
 
         <TextView
                 android:id="@+id/recycler_view_h_txt_location"
                 android:background="@color/main2Trans"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="מיקום"
+                android:text="@string/location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -46,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="שם"
                 android:textColor="#000"
                 android:textSize="18sp"
         />

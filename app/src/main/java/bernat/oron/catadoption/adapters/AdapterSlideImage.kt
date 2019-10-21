@@ -17,7 +17,7 @@ import com.google.firebase.storage.FirebaseStorage
 class AdapterSlideImage(val context: Context, val imageModelArrayList: ArrayList<String>): PagerAdapter(){
 
     var inflater: LayoutInflater? = LayoutInflater.from(context)
-    var onItemClick: ((ByteArray) -> Unit)? = null
+    var onItemClick: ((ArrayList<String>) -> Unit)? = null
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
@@ -28,8 +28,12 @@ class AdapterSlideImage(val context: Context, val imageModelArrayList: ArrayList
     }
 
     override fun instantiateItem(view: ViewGroup, position: Int): Any {
-        val imageLayout = inflater?.inflate(R.layout.activity_animal_page_sliding_images, view, false)!!
-        val imageView = imageLayout.findViewById(R.id.image) as ImageView
+        var imageLayout = inflater?.inflate(R.layout.activity_animal_page_sliding_images, view, false)!!
+        var imageView = imageLayout.findViewById(R.id.image) as ImageView
+        if (onItemClick == null){
+            imageLayout = inflater?.inflate(R.layout.activity_animal_page_sliding_images_full_screen, view, false)!!
+            imageView = imageLayout.findViewById(R.id.image) as ImageView
+        }
         val stringImage: String? = imageModelArrayList[position]
         val storageReference = FirebaseStorage.getInstance()
         if (stringImage != null) {
@@ -42,7 +46,7 @@ class AdapterSlideImage(val context: Context, val imageModelArrayList: ArrayList
                         .into(imageView)
                     view.addView(imageLayout, 0)
                     imageLayout.setOnClickListener {
-                        onItemClick?.invoke(array)
+                        onItemClick?.invoke(imageModelArrayList)
                     }
                 }.addOnFailureListener {
                     Log.e("images from DB","failed to fetch")

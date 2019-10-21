@@ -10,6 +10,7 @@
             android:layoutDirection="rtl"
             >
         <TextView
+                android:textColor="@color/mainTextLightWhite"
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
                 android:textSize="24sp"
@@ -24,6 +25,7 @@
                 android:textSize="18sp"
                 android:text="@string/north"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
 
         <CheckBox
@@ -33,6 +35,7 @@
                 android:textSize="18sp"
                 android:text="@string/haifa"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
 
         <CheckBox
@@ -42,6 +45,7 @@
                 android:textSize="18sp"
                 android:text="@string/center"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
 
         <CheckBox
@@ -51,6 +55,7 @@
                 android:textSize="18sp"
                 android:text="@string/tlv"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
 
         <CheckBox
@@ -60,6 +65,7 @@
                 android:textSize="18sp"
                 android:text="@string/jerusalem"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
 
         <CheckBox
@@ -69,12 +75,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/south"
+                android:textColor="@color/mainTextLightWhite"
         />
     </RadioGroup>
     <RadioGroup
             android:layoutDirection="rtl"
             >
         <TextView
+                android:textColor="@color/mainTextLightWhite"
                 android:layout_gravity="center"
                 android:layout_margin="12dp"
                 android:textSize="24sp"
@@ -89,6 +97,7 @@
                 android:textSize="18sp"
                 android:text="@string/animal_filter_ag_1"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
         <CheckBox
                 android:id="@+id/checkboxA_6M_2Y"
@@ -97,6 +106,7 @@
                 android:textSize="18sp"
                 android:text="@string/animal_filter_age_2"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
         <CheckBox
                 android:id="@+id/checkboxA_2Y_"
@@ -105,6 +115,7 @@
                 android:textSize="18sp"
                 android:text="@string/animal_filter_age_3"
                 android:checked="true"
+                android:textColor="@color/mainTextLightWhite"
         />
     </RadioGroup>
 
@@ -113,8 +124,9 @@
         android:id="@+id/frag_btn_filter"
         android:background="@drawable/btn_round_corners_pink"
         android:text="@string/filter"
+        android:textColor="@color/mainTextLightWhite"
         android:textSize="20sp"
-        android:layout_marginBottom="2sp"
+        android:paddingBottom="2sp"
     />
 
 </TableLayout>

@@ -24,12 +24,19 @@
             <EditText
                     android:id="@+id/fragment_upload1_edit_name"
 
+                    android:textSize="26sp"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textDirection="rtl"
                     android:hint="@string/animal_name"
                     android:layout_margin="12sp"
+                    android:inputType="textPersonName"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:shadowColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
                     />
 
         </TableRow>
@@ -38,18 +45,21 @@
                 android:gravity="center">
 
             <TextView
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/animal_type"
                     android:textAlignment="center"
                     android:layout_margin="8sp"
                     android:padding="2sp"
+                    android:textColor="@color/mainTextLightWhite"
                     />
 
             <Spinner
-                    android:id="@+id/fragment_upload1_picker_type"
 
+                    android:popupBackground="@color/main2"
+                    android:id="@+id/fragment_upload1_picker_type"
+                    android:backgroundTint="@color/mainTextLightWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -62,18 +72,21 @@
             android:gravity="center">
 
             <TextView
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sex"
                     android:textAlignment="center"
                     android:layout_margin="8sp"
                     android:padding="2sp"
+                    android:textColor="@color/mainTextLightWhite"
                     />
 
             <Spinner
                     android:id="@+id/fragment_upload1_picker_gender"
 
+                    android:popupBackground="@color/main2"
+                    android:backgroundTint="@color/mainTextLightWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -87,12 +100,17 @@
             <EditText
                     android:id="@+id/fragment_upload1_edit_age"
 
+                    android:textSize="26sp"
                     android:inputType="number"
                     android:textAlignment="center"
                     android:hint="@string/age_m"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_margin="12sp"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
                     />
 
         </TableRow>
@@ -105,15 +123,19 @@
 
                 android:text="@string/animal_filter_R"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 android:layout_margin="12sp"
                 android:padding="2sp"
+                android:textColor="@color/mainTextLightWhite"
                 />
 
         <Spinner
                 android:id="@+id/fragment_upload1_picker_breed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:popupBackground="@color/main2"
+                android:backgroundTint="@color/mainTextLightWhite"
                 />
 
 

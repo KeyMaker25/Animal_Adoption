@@ -20,7 +20,11 @@ import android.net.ConnectivityManager
 
 class ActivitySplash :AppCompatActivity(){
 
-    companion object{
+    private val ref = FirebaseDatabase.getInstance()
+    private lateinit var textV : TextView
+
+    companion object {
+
         fun isUserLogin() : Boolean {
             if (FirebaseAuth.getInstance().currentUser != null){
                 uid = FirebaseAuth.getInstance().currentUser!!.uid
@@ -39,10 +43,8 @@ class ActivitySplash :AppCompatActivity(){
 
         var favoriteAnimalCollectionID = arrayListOf<String>()
         var uploadAnimalCollectionID = arrayListOf<String>()
+        var uploadAnimalCollection = arrayListOf<Animal>()
     }
-
-    val ref = FirebaseDatabase.getInstance()
-    lateinit var textV : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,8 +93,9 @@ class ActivitySplash :AppCompatActivity(){
                 Log.i("animals count " ,p0.children.count().toString())
                 children.forEach {
                     val animal = it.value as MutableMap<String, Any>
+                    var temp : Animal? = null
                     if (animal["type"] == "Cat") {
-                        val temp = Cat(it.key as String,
+                        temp = Cat(it.key as String,
                             animal["name"] as String,
                             animal["age"] as Long,
                             animal["breed"] as String,
@@ -105,9 +108,8 @@ class ActivitySplash :AppCompatActivity(){
                             animal["image"] as MutableList<String>
                         )
                         catsCollection.add(temp)
-                        animalCollection.add(temp)
                     } else if (animal["type"] == "Dog"){
-                        val temp = Dog(it.key as String,
+                        temp = Dog(it.key as String,
                             animal["name"] as String,
                             animal["age"] as Long,
                             animal["breed"] as String,
@@ -120,8 +122,8 @@ class ActivitySplash :AppCompatActivity(){
                             animal["image"] as MutableList<String>
                         )
                         dogsCollection.add(temp)
-                        animalCollection.add(temp)
                     }
+                    animalCollection.add(temp!!)
                 }
                 startActivity(Intent(applicationContext,ActivityMain::class.java))
             }
@@ -159,15 +161,57 @@ class ActivitySplash :AppCompatActivity(){
                         uploadAnimalCollectionID.add(id.key)
                     }
                 }
-
                 Log.i("uploaded count ", uploadAnimalCollectionID.size.toString())
                 Log.i("favorite count ", favoriteAnimalCollectionID.size.toString())
+                getUploadAnimalCollection()
             }
 
             override fun onCancelled(p0: DatabaseError) {
                 Log.e("SingleValueEvent E", p0.message)
                 connectionFailed(p0.message)
             }
+        })
+    }
+
+    private fun getUploadAnimalCollection() {
+        val typeRef = ref.reference.child("Israel-tst/animals")
+        typeRef.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(p0: DataSnapshot) {
+                val children = p0.value as HashMap<String,Any>
+                children.forEach {
+                    val animal = it.value as MutableMap<String, Any>
+                    val animalTemp = Animal(
+                            it.key,
+                            animal["name"] as String,
+                            animal["type"] as String,
+                            animal["age"] as Long,
+                            animal["breed"] as String,
+                            animal["story"] as String,
+                            animal["location"] as String,
+                            animal["gender"] as String,
+                            animal["weight"] as Long,
+                            animal["timeOfUpload"] as String,
+                            animal["ownerID"] as String,
+                            animal["phone"] as String,
+                            animal["image"] as MutableList<String>?
+                        )
+                    //check if already approved
+                    if(animalCollection.firstOrNull {
+                                it1 ->
+                                it1.ID == animalTemp.ID } == null )
+                    {
+                        uploadAnimalCollection.add(animalTemp)
+                        Log.i("upload animal added", animalTemp.name)
+                    }
+
+
+                }
+
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
         })
     }
 }

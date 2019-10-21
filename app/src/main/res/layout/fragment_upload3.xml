@@ -27,6 +27,7 @@
                 android:text="@string/time_to_upload_photos"
                 android:textDirection="rtl"
                 android:textSize="16sp"
+                android:textColor="@color/mainTextLightWhite"
                 />
 
         <TextView
@@ -37,6 +38,7 @@
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:padding="6dp"
+                android:textColor="@color/mainTextLightWhite"
                 />
         <TableRow
                 android:gravity="center"

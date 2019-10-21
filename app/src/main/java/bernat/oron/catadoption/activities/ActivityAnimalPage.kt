@@ -13,12 +13,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.animalCollection
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.favoriteAnimalCollectionID
 import bernat.oron.catadoption.activities.ActivitySplash.Companion.isUserLogin
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uid
+import bernat.oron.catadoption.activities.ActivitySplash.Companion.uploadAnimalCollection
 import bernat.oron.catadoption.adapters.AdapterSlideImage
 import bernat.oron.catadoption.model.Animal
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.viewpagerindicator.CirclePageIndicator
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,7 +36,9 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
     private var currentPage = 0
     private var NUM_PAGES = 1
     private var isLiked: Boolean = false
-    var stringImages: ArrayList<String>? = null
+    companion object{
+        var stringImages: ArrayList<String>? = null
+    }
     var animal : Animal? = null
     private lateinit var btnAddFavorite : Button
 
@@ -64,6 +73,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         val btnContact : Button = findViewById(R.id.animal_page_btn_contact)
         val btnShare : Button = findViewById(R.id.animal_page_btn_share)
 
+
         txtName.text = item.name
         txtAge.text = item.age.toString()
         txtGender.text = item.gender
@@ -77,6 +87,124 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         btnCall.setOnClickListener(this)
         btnContact.setOnClickListener(this)
         btnShare.setOnClickListener(this)
+
+        if (!animalCollection.contains(item)){
+            showAlert("לא במאגר", "עדיין לא אושרה", null)
+        }
+
+        if (uid == item.ownerID){
+            val btnRemove = findViewById<Button>(R.id.animal_page_btn_remove)
+            btnRemove.visibility = View.VISIBLE
+            btnRemove.setOnClickListener {
+                showAlert("אתה בטוח ? ", "${item.name} ימחק ",DialogInterface.OnClickListener
+                { dialog, which ->
+                    if (which == -1){
+                        dialog.dismiss()
+                    }else if (which == -2){
+                        deleteAnimalFromDB(item)
+                    }
+                })
+            }
+        }
+
+    }
+
+    private fun deleteAnimalFromDB(item: Animal) {
+        val ref = FirebaseDatabase.getInstance()
+        /**
+         * Delete the animal from all locations in DB
+         * 1 - tst-upload animal
+         * 2 - tst-upload list
+         * 3 - images from storage
+         * 4 - ? prod - upload animal,
+         * 5 - ? like ? - prod
+         * **/
+
+        //stage 1
+        ref.reference.child("Israel-tst/animals/${item.ID}").removeValue()
+            .addOnSuccessListener {
+                Log.i("remove","successfully ${item.name}")
+                //stage 2
+                ref.reference.child("Israel-tst/users/${uid}/uploads/${item.ID}").removeValue()
+                    .addOnSuccessListener {
+                        Log.i("remove","successfully ${item.name}")
+                        //stage 3
+                        for (image in item.image!!){
+                            val storageRef = FirebaseStorage.getInstance().reference.child(image)
+                            storageRef.delete()
+                                .addOnSuccessListener {
+                                    Log.i("remove","successfully ${item.name}")
+                                }
+                                .addOnFailureListener {
+                                    Log.e("remove","error with ${item.name}")
+                                    Log.e("remove",it.toString())
+                                    showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+                                }
+                        }
+                        //stage 4
+                        if (animalCollection.contains(item)){
+                            ref.reference.child("Israel-prod/animals/${item.ID}").removeValue()
+                                .addOnSuccessListener {
+                                    //stage 5
+                                    removeAnimalFromLikedList(item)
+                                    showAlert("מחיקה הושלמה","${item.name} לא יופיע יותר במאגר ",null)
+                                    startActivity(Intent(this,ActivitySplash::class.java))
+                                }
+                                .addOnFailureListener {
+                                    Log.e("remove","error with ${item.name}")
+                                    Log.e("remove",it.toString())
+                                    showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+                                }
+                        }
+                    }.addOnFailureListener {
+                        Log.e("remove","error with ${item.name}")
+                        Log.e("remove",it.toString())
+                        showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+                    }
+            }
+            .addOnFailureListener {
+                Log.e("remove","error with ${item.name}")
+                Log.e("remove",it.toString())
+                showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+            }
+
+    }
+
+    private fun removeAnimalFromLikedList(item: Animal) {
+        val ref = FirebaseDatabase.getInstance()
+        ref.reference.child("Israel-tst/users/").
+            addListenerForSingleValueEvent( object : ValueEventListener {
+                override fun onDataChange(p0: DataSnapshot) {
+                    val map = p0.value as? MutableMap<String, Any>
+                    map?.let {
+                        for (i in it){
+                            val temp = i.value as MutableMap<String, Any>
+                            var count = 0
+                            val favoriteMap = temp["favorite"] as MutableMap<String,String>
+                            for (f in favoriteMap){
+                                if (f.key == item.ID){
+                                    ref.reference.child("Israel-tst/users/${i.key}/favorite/${item.ID}")
+                                        .removeValue()
+                                        .addOnSuccessListener {
+                                            Log.i("removed","Successfully ${item.type} ${item.name} from user ID = ${i.key}")
+                                        }
+                                        .addOnFailureListener { exp ->
+                                            Log.e("remove","like from users Error with $exp")
+                                            showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+                                        }
+                                    count++
+                                }
+                            }
+                            Log.i("removed","removed $count liked")
+                        }
+                    }
+
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                    showAlert("ERROR","בעיות חיבור לאינטרנט",null)
+                }
+            })
 
     }
 
@@ -94,11 +222,10 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         mPager = findViewById(R.id.pager)
         val adapter = AdapterSlideImage(this, stringImages!!)
         adapter.onItemClick = {
-                im->
+                _->
             val intent = Intent(applicationContext,ActivityFullScreen::class.java)
-            intent.putExtra("image",im)
+            intent.putExtra("images", stringImages)
             startActivity(intent)
-
         }
         mPager?.adapter = adapter
         val indicator = findViewById<CirclePageIndicator>(R.id.indicator)
@@ -142,23 +269,28 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.animal_page_btn_call->{                if (isUserLogin()){
-                val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:${animal!!.phone}")
-                startActivity(intent)
-            }else{
-                showAlert("סליחה","צריך להרשם לפני יצירת קשר",DialogInterface.OnClickListener { dialog, which ->
-                    dialog.dismiss()
-                    sendUserToLogin()
-                })
-
-            }
+            R.id.animal_page_btn_call->{
+                if (isUserLogin()) {
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:${animal!!.phone}")
+                    startActivity(intent)
+                } else {
+                    showAlert("סליחה","צריך להרשם לפני יצירת קשר",DialogInterface.OnClickListener {
+                        dialog, which ->
+                        if(which == -2) sendUserToLogin()
+                        dialog.dismiss()
+                    })
+                }
             }
             R.id.animal_page_btn_add_favorite->{
                 if (isUserLogin()){
-                    if (isLiked) unLike()
-                    else like()
-                }else{
+                    if (uploadAnimalCollection.firstOrNull { it.ID == animal?.ID } == null){
+                        if (isLiked) unLike(true)
+                        else like()
+                    } else {
+                        showAlert("לא ניתן לבצע לייק ","עדיין ממתין לאישור", null)
+                    }
+                } else {
                     sendUserToLogin()
                 }
 
@@ -168,21 +300,25 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
                     val i = Intent(this, ActivityContactUs::class.java)
                     i.putExtra("from","animal page")
                     startActivity(i)
-                }else{
+                } else {
                     sendUserToLogin()
                 }
             }
             R.id.animal_page_btn_share->{
-                val sharingIntent = Intent(Intent.ACTION_SEND)
-                sharingIntent.type = "text/plain"
-                val shareBody = """
+                if (uploadAnimalCollection.firstOrNull { it.ID == animal?.ID } == null){
+                    val sharingIntent = Intent(Intent.ACTION_SEND)
+                    sharingIntent.type = "text/plain"
+                    val shareBody = """
                     hey im ${animal?.name} and im ${animal?.age} old
                     of type ${animal?.breed} and im usually here -  ${animal?.location}
                     Do you wish to adopt me ? 
                 """.trimIndent()
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
-                startActivity(Intent.createChooser(sharingIntent, "Share via"))
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here")
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+                    startActivity(Intent.createChooser(sharingIntent, "Share via"))
+                } else {
+                    showAlert("לא ניתן לשתף ","עדיין ממתין לאישור", null)
+                }
             }
         }
     }
@@ -211,7 +347,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
             }
     }
 
-    private fun unLike() {
+    private fun unLike(fromUser: Boolean) {
         val obj = animal!!
         Log.i("UnLike animal id", obj.ID)
         val ref = FirebaseDatabase.getInstance()
@@ -225,7 +361,7 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
                     btnAddFavorite.background = ContextCompat.getDrawable(this,R.drawable.btn_like_star_empty)
                     Log.i("Removed from DB", "Successful")
                     favoriteAnimalCollectionID.remove(obj.ID)
-                    showAlert("הוסר", "לא יופיע יותר במועדפים",null)
+                    if (fromUser) showAlert("הוסר", "לא יופיע יותר במועדפים",null)
                 }else{
                     Log.e("Removed from DB", "Failed")
 
@@ -247,12 +383,13 @@ class ActivityAnimalPage : AppCompatActivity(), View.OnClickListener{
         alert.setMessage(msg)
         if (listener == null)
         {
-            alert.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok") {
+            alert.setButton(AlertDialog.BUTTON_NEUTRAL, "הבנתי") {
                     _,_->
                 alert.dismiss()
             }
         }else{
-            alert.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok", listener)
+            alert.setButton(AlertDialog.BUTTON_NEGATIVE, "אוקי", listener)
+            alert.setButton(AlertDialog.BUTTON_POSITIVE, "בטל" , listener)
         }
         alert.show()
     }

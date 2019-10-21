@@ -5,10 +5,12 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorPrimaryBtn">#C955DD</color>
     <color name="colorText">#172ED6</color>
-    <color name="main2">#897AC9</color>
+    <color name="main2">#4D3D91</color>
     <color name="main2Trans">#99C5C0E6</color>
     <color name="colorTextDel">#FF0013</color>
     <color name="colorAccent">#C955DD</color>
     <color name="main_blue">#1E88E5</color>
+
+    <color name="mainTextLightWhite">#E1EEED</color>
 
 </resources>

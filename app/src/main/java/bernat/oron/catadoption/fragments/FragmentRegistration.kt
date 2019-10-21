@@ -33,11 +33,13 @@ class FragmentRegistration : Fragment() {
     lateinit var nameCon: TextInputLayout
     var isLogin = false
 
-
     override fun onDestroy() {
         super.onDestroy()
         fragmentInterfaceInterface = null
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
+            View? = inflater.inflate(R.layout.fragment_signup, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,20 +52,15 @@ class FragmentRegistration : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
-            View? = inflater.inflate(R.layout.fragment_signup, container, false)
-
     override fun onStart() {
         super.onStart()
-
         signupButton.setOnClickListener {
             if (isLogin){ // login
                 login()
             }else{ //sign up
-                signup()
+                sighup()
             }
         }
-
         loginLink.setOnClickListener {
             //this btn help change the view.
             if (isLogin){ // login
@@ -92,7 +89,7 @@ class FragmentRegistration : Fragment() {
 
     private fun login(){
         if (!validate(true)){
-            onSignupFailed()
+            onSighupFailed()
             return
         }
         signupButton.isEnabled = false
@@ -113,10 +110,10 @@ class FragmentRegistration : Fragment() {
             android.os.Handler().postDelayed(
                 {
                     if (task.isSuccessful){
-                        onSignupSuccess()
+                        onSighupSuccess()
                         startActivity(Intent(context?.applicationContext,ActivitySplash::class.java))
                     }else{
-                        onSignupFailed()
+                        onSighupFailed()
                         Log.e("error" ,task.exception.toString())
                     }
                     progressDialog.dismiss()
@@ -126,9 +123,9 @@ class FragmentRegistration : Fragment() {
 
     }
 
-    private fun signup() {
+    private fun sighup() {
         if (!validate(false)) {
-            onSignupFailed()
+            onSighupFailed()
             return
         }
 
@@ -153,9 +150,9 @@ class FragmentRegistration : Fragment() {
                 {
                     if (task.isSuccessful){
                         setDisplayName(name)
-                        onSignupSuccess()
+                        onSighupSuccess()
                     }else{
-                        onSignupFailed()
+                        onSighupFailed()
                         println("error ${task.exception}")
                     }
                     progressDialog.dismiss()
@@ -166,20 +163,20 @@ class FragmentRegistration : Fragment() {
 
     }
 
-    fun onSignupSuccess() {
+    private fun onSighupSuccess() {
         fragmentInterfaceInterface?.didFinish(true)
         Toast.makeText(context, " ברוך הבא ${auth.currentUser?.displayName}", Toast.LENGTH_LONG).show()
         uid = auth.currentUser!!.uid
         signupButton.isEnabled = true
     }
 
-    fun onSignupFailed() {
+    private fun onSighupFailed() {
         fragmentInterfaceInterface?.didFinish(false)
         Toast.makeText(context, "התחברות נכשלה", Toast.LENGTH_LONG).show()
         signupButton.isEnabled = true
     }
 
-    fun validate(isLogin : Boolean): Boolean {
+    private fun validate(isLogin : Boolean): Boolean {
         var valid = true
         val name = nameText.text.toString()
         val email = emailText.text.toString()

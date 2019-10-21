@@ -7,11 +7,8 @@ interface RegistrationInterface {
 interface FilterInterface {
     fun didFilter(checkItems: ArrayList<Int>)
 }
-interface UploadNewAnimalInterface{
-    fun newAnimal(animal: Animal)
-}
 
-interface PagerMoveInterface{
+interface UploadNewAnimalInterface{
     fun hideBackBtn()
     fun hideNextBtn()
     fun showNextBtn()
@@ -20,4 +17,5 @@ interface PagerMoveInterface{
     fun moveBack()
     fun changeBtnText()
     fun restoreBtnText()
+
 }

@@ -4,10 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="my_story_full">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
     <string name="company_slogan_long">
-        אנו ב-Theo Tech
-        מאמינים בפשטות, נוחות, והנגשה.
-        נעזור לך לעבור משלב הרעיון, לעסק מצליח.
-        עם הדרכה ממוקדת, ושפה בגובה העיניים.
+       <b>  Theo Tech </b>
     </string>
     <string name="title_upload_image_view"><b> ניתן להעלות עד שלוש תמונות </b></string>
     <string name="menu_home">בית</string>
@@ -33,7 +30,7 @@
     <string name="cat">חתול</string>
     <string name="dog">כלב</string>
 
-    <string name="location_title"><b>מיקום - מחוזות</b></string>
+    <string name="location_title"><u><b>מיקום - מחוזות</b></u></string>
     <string name="north">צפון</string>
     <string name="haifa">חיפה</string>
     <string name="tlv">תל אביב</string>
@@ -66,7 +63,7 @@
     <string name="animal_filter_R1">טהור</string>
     <string name="animal_filter_R">גזע</string>
     <string name="setting_display_name">שם תצוגה</string>
-    <string name="heb_ages"><b>גילאים</b></string>
+    <string name="heb_ages"><u><b>גילאים</b></u></string>
     <string name="rank">נשמח לדירוג</string>
     <string name="cats">חתולים</string>
     <string name="dogs">כלבים</string>
@@ -90,5 +87,8 @@
     </string>
     <string name="Back">חזור</string>
     <string name="Next">המשך</string>
+    <string name="delete_animal">מחק ממאגר</string>
+    <string name="increase_image">increase image</string>
+
 
 </resources>

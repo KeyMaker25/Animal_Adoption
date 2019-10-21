@@ -20,6 +20,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="80dp"
                    android:layout_margin="12dp"
+                   android:contentDescription="@string/increase_image"
                 />
 
         <!--  Name Label -->
@@ -28,7 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+
+                android:textColorHint="@color/mainTextLightWhite"
+                android:textColor="@color/mainTextLightWhite"
+                >
 
             <EditText
                   android:gravity="center"
@@ -36,7 +41,12 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:inputType="textCapWords"
-                  android:hint="@string/name" />
+                  android:hint="@string/name"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
+                    />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,14 +55,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/mainTextLightWhite"
+                android:textColor="@color/mainTextLightWhite"
+                >
             <EditText
                       android:gravity="center"
                       android:id="@+id/input_email"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:inputType="textEmailAddress"
-                      android:hint="@string/email" />
+                      android:hint="@string/email"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
+                    />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Label -->
@@ -60,13 +78,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/mainTextLightWhite"
+                android:textColor="@color/mainTextLightWhite"
+                >
             <EditText android:gravity="center"
                       android:id="@+id/input_password"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:inputType="textPassword"
-                      android:hint="@string/password" />
+                      android:hint="@string/password"
+
+                    android:textColorHint="@color/mainTextLightWhite"
+                    android:textColor="@color/mainTextLightWhite"
+                    android:backgroundTint="@color/mainTextLightWhite"
+                    />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Signup Button -->
@@ -78,7 +104,9 @@
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/btn_round_corners_pink"
                 android:padding="12dp"
-                android:text="@string/create_account"/>
+                android:text="@string/create_account"
+                android:textColor="@color/mainTextLightWhite"
+                />
 
         <TextView
                 android:id="@+id/link_login"
@@ -87,7 +115,12 @@
                   android:layout_marginBottom="24dp"
                   android:text="@string/already_a_member_login"
                   android:gravity="center"
-                  android:textSize="16sp"/>
+                  android:textSize="16sp"
+
+                android:textColorHint="@color/mainTextLightWhite"
+                android:textColor="@color/mainTextLightWhite"
+                android:backgroundTint="@color/mainTextLightWhite"
+                />
 
     </LinearLayout>
 </ScrollView>
