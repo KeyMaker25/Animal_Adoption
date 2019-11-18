@@ -14,8 +14,8 @@ App Is In Hebrew
 </p>
 
 ## Usage
-Please enjoy and tell a friend. 
-If i manage to help even one animal get adopted. 
+Please enjoy and tell a friend. <br/>
+If we can help even-one animal to get adopted. <br/>
 My project is a success :)
 
 
