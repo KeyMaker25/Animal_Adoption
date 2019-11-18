@@ -5,9 +5,11 @@ You can also upload you own animal (if you found the little guy)
 App Is In Hebrew 
 
 ## About
-<p align="center" justifyContent="space-around" >
+<p align="center" >
   <img src="https://files.fm/thumb_show.php?i=wmukjdpt" width="250" >
-  <img src="https://files.fm/thumb_show.php?i=y38zzrfc" width="250" >
+  
+  <img src="https://files.fm/thumb_show.php?i=y38zzrfc" width="250" margin="10%" >
+  
   <img src="https://files.fm/thumb_show.php?i=qhjqmhfx" width="250" >
 </p>
 
