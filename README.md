@@ -14,13 +14,14 @@ My project is a success :)
 
 
 ## Contributing
-SDK use - * Realm
-          * FireBase Database.
-          * FireBase Storage (Images).
-          * Kotlin
-          * Recycler View
-          * Card View
-          * Glide
+SDK use:
+* Realm
+* FireBase Database.
+* FireBase Storage (Images).
+* Kotlin
+* Recycler View
+* Card View
+* Glide
           
 ## License
 All rights reserve to Theo-Tech
