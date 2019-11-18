@@ -1,6 +1,6 @@
-<p align="center" >
+
 # Adopt Me
-  
+<p align="center" >  
 This app will make Cats & Dogs Adoption easy. 
 You can, and please do - upload your animal (if you found one) <br/>
 App Is In Hebrew 
