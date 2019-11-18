@@ -5,8 +5,8 @@ You can also upload you own animal (if you found the little guy)
 App Is In Hebrew 
 
 ## About
-<a href="https://files.fm/u/zzps4jdv#/view/Screenshot_1574102694.png"/>
-<a href="https://files.fm/thumb_show.php?i=y38zzrfc">
+![](https://files.fm/thumb_show.php?i=wmukjdpt | width=100) ![](https://files.fm/thumb_show.php?i=y38zzrfc | width=100)
+![](https://files.fm/thumb_show.php?i=qhjqmhfx | width=100) 
 
 ## Usage
 Please enjoy and tell a friend. 
